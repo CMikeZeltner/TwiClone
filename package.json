@@ -1,0 +1,25 @@
+{
+  "name": "twiclone",
+  "version": "1.0.0",
+  "description": "A twitter clone built with React, NodeJS, and MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CMikeZeltner/TwiClone.git"
+  },
+  "author": "Christopher M. Zeltner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CMikeZeltner/TwiClone/issues"
+  },
+  "homepage": "https://github.com/CMikeZeltner/TwiClone#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
