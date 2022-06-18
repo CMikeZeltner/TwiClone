@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import {useNavigate} from 'react-router-dom'
 const axios = require('axios').default
 
 
@@ -10,6 +11,8 @@ function Login() {
     })
 
     const {email, password} = formData
+
+    const navigate = useNavigate()
 
     const onChange = (e) =>{
         setFormData((prevState) => ({
@@ -24,12 +27,14 @@ function Login() {
         try {
              const response = await axios.post('/login', formData)
             if(response.data){
-                console.log(response.data)
+               localStorage.setItem('user', JSON.stringify(response.data))
             }
+            navigate('/home')
         }catch (error) {
             console.log(error)
         }
     }
+
        
 
 

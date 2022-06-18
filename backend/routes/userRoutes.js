@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {registerUser, loginUser} = require('../controllers/userController')
+const {registerUser, loginUser, logoutUser, test} = require('../controllers/userController')
 const {validatePassword} = require('../middleware/registerMiddleware')
 
 
@@ -10,9 +10,11 @@ router.route('/register')
 router.route('/login') 
 .post(loginUser)
 
-router.use('/logout', (req, res) => {
-    res.send('this page will log you out')
-})
+router.route('/logout')
+.post(logoutUser)
+
+router.route('/test')
+.get(test)
 
 
 router.get('/:userName', (req, res) => {

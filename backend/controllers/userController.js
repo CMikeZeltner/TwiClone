@@ -81,7 +81,20 @@ const generateToken = (id) => {
     })
 }
 
+const logoutUser = () => {
+    localStorage.removeItem('user')
+}
+
+const test = (req, res) => {
+    if(req.headers.authorization){
+        console.log(req.headers.authorization)
+    }
+    console.log('no bueno')
+}
+
 module.exports = {
     registerUser,
-    loginUser
+    loginUser,
+    logoutUser,
+    test
 }
