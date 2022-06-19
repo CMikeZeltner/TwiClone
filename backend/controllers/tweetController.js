@@ -4,11 +4,8 @@ const User = require('../models/userModel')
 
 
 
-const sendTweet = asyncHandler(async (req, res) => {
-
-})
 
 
 module.exports = {
-    sendTweet,
+    
 }

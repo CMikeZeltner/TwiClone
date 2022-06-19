@@ -1,13 +1,84 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+/* Login/Register page styles */
+h1{
+  font-size: 48px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 25px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.login-register-container {
+	text-align: center;
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(assets/cyclone-background5.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+span > a {
+  color: #1DA1F2;
+  text-decoration: none;
+}
+
+.title-form-container{
+  background-color: rgba(0, 0, 0, .5);
+  height: 500px;
+  width: 500px;
+  
+}
+
+
+.login-register-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.login-register-form > input{
+  height: 25px;
+  width: 250px;
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+.login-register-form > label{
+  display:none;
+}
+
+button{
+  cursor: pointer;
+  background-color: rgba(50, 205, 50, 1);
+  border: none;
+  width: 225px;
+  height: 35px;
+  border-radius: 50px;
+  color: rgba(255, 255, 255, .9);
+  font-size: 18px;
+  font-weight: bold;
+}
+
+button:hover{
+  background-color: rgba(50, 205, 50, .9);
+}
+
+.logo{
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  height: 75px;
+  width: 75px;
+  background-color: rgba(0, 0, 0, .5);
+  border-radius: 75px;
+  padding: 10px;
+  color: white;
+}
+
+span{
+  font-size: 18px;
+  color: rgba(255, 255, 255, .9)
 }

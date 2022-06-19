@@ -10,16 +10,16 @@ router.route('/register')
 router.route('/login') 
 .post(loginUser)
 
-router.route('/logout')
-.post(logoutUser)
 
-router.route('/test')
-.get(test)
-
-
-router.get('/:userName', (req, res) => {
-    res.send('asdasd')
+router.get('/test1', (req, res) => {
+    console.log(req.body)
 })
+
+
+
+// router.get('/:userName', (req, res) => {
+//     res.send('asdasd')
+// })
 
 
 module.exports = router
