@@ -1,20 +1,25 @@
+import {useState, useEffect} from 'react'
+import {useSelector} from 'react-redux'
+
 function Home() {
 
-  const test = (e, req, res) => {
-    e.preventDefault()
-    if(localStorage){
-        console.log(JSON.parse(localStorage.getItem('user')))
+  const [loggedIn, setLoggedIn] = useState(false)  
+
+  const {user} = useSelector((state) => state.auth)
+
+  useEffect(() => {
+    if(user){
+      console.log('user logged in')
+      setLoggedIn(true)
     } else {
-      console.log('no bueno')
+      console.log('user not logged in!!')
     }
-}
+  }, [user])
 
 
   return (
     <>
       <div>Home</div>
-      <button type='submit'
-      onClick={test}>Test</button>
     </>
   )
 }
