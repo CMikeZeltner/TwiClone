@@ -4,7 +4,6 @@ import {useSelector} from 'react-redux'
 export const useAuthStatus = () => {
 
     const {user} = useSelector((state) => state.auth)
-    console.log(user)
     const [loggedIn, setLoggedIn] = useState(false)
 
     useEffect(() => {
@@ -13,6 +12,6 @@ export const useAuthStatus = () => {
         } else{
             setLoggedIn(false)
         }
-    }, [user, setLoggedIn])
+    }, [user])
     return loggedIn
 }

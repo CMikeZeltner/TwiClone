@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {BsHurricane} from 'react-icons/bs'
@@ -18,6 +18,12 @@ function Login() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
+    useEffect(() => {
+        if(user){
+            navigate('/home')
+        }
+    }, [user, navigate, dispatch])
+
     const onChange = (e) =>{
         setFormData((prevState) => ({
             ...prevState,
@@ -34,6 +40,7 @@ function Login() {
             password
         }
         dispatch(login(userData))
+        console.log('in login ' + user)
 
         if(user){
             navigate('/home')
