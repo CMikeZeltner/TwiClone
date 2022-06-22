@@ -1,8 +1,8 @@
 import {useState} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {BsHurricane} from 'react-icons/bs'
-const axios = require('axios').default
-
+import {login} from '../features/auth/authSlice'
 
 function Login() {
 
@@ -13,7 +13,10 @@ function Login() {
 
     const {email, password} = formData
 
+    const {user} = useSelector((state) => state.auth)
+
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const onChange = (e) =>{
         setFormData((prevState) => ({
@@ -25,14 +28,17 @@ function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        try {
-             const response = await axios.post('/login', formData)
-            if(response.data){
-               localStorage.setItem('user', JSON.stringify(response.data))
-            }
+
+        const userData = {
+            email,
+            password
+        }
+        dispatch(login(userData))
+
+        if(user){
             navigate('/home')
-        }catch (error) {
-            console.log(error)
+        } else {
+            console.log('wrong info')
         }
     }
 

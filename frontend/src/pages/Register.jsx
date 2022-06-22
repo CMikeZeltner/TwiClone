@@ -1,7 +1,7 @@
 import {useState} from 'react'
+import {useSelector, useDispatch} from 'react-redux'
 import {BsHurricane} from 'react-icons/bs'
-const axios = require('axios').default
-
+import {register} from '../features/auth/authSlice'
 
 
 function Register() {
@@ -12,6 +12,8 @@ function Register() {
         email: '',
         password: ''
     })
+
+    const dispatch = useDispatch()
 
     const {userName, displayName, email, password} = formData
 
@@ -25,14 +27,14 @@ function Register() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        try {
-             const response = await axios.post('/register', formData)
-            if(response.data){
-                console.log(response.data)
-            }
-        }catch (error) {
-            console.log(error)
+        
+        const registerData = {
+            userName,
+            displayName,
+            email,
+            password
         }
+        dispatch(register(registerData))
     }
        
 
