@@ -11,6 +11,9 @@ function Login() {
         password: ''
     })
 
+    const [loggedIn, setLoggedIn] = useState(false)
+    
+
     const {email, password} = formData
 
     const {user} = useSelector((state) => state.auth)
@@ -19,10 +22,10 @@ function Login() {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        if(user){
+        if(user || loggedIn){
             navigate('/home')
         }
-    }, [user, navigate, dispatch])
+    }, [user, navigate, dispatch, loggedIn])
 
     const onChange = (e) =>{
         setFormData((prevState) => ({
@@ -40,10 +43,10 @@ function Login() {
             password
         }
         dispatch(login(userData))
-        console.log('in login ' + user)
+        
 
         if(user){
-            navigate('/home')
+            setLoggedIn(true)
         } else {
             console.log('wrong info')
         }

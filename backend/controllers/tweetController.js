@@ -19,7 +19,7 @@ const createTweet = asyncHandler(async (req, res) => {
     }
 
     const tweet = await Tweet.create({
-        user,
+        user: user._id,
         message,
         likes: 0
     })
@@ -29,7 +29,27 @@ const createTweet = asyncHandler(async (req, res) => {
     
 })
 
+const deleteTweet = asyncHandler(async (req, res) => {
+    const tweetID = req.params.id
+    console.log(tweetID)
+    
+
+    
+    const tweet = await Tweet.findByIdAndDelete(tweetID)
+
+    if(!tweet){
+        throw new Error('Tweet does not exist')
+    }
+
+    
+
+    res.json(tweet)
+    
+    
+})
+
 
 module.exports = {
-    createTweet
+    createTweet,
+    deleteTweet
 }

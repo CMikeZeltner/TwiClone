@@ -1,5 +1,6 @@
 const asyncHandler = require('express-async-handler')
 const User = require('../models/userModel')
+const Tweet = require('../models/tweetModel')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
@@ -82,8 +83,30 @@ const generateToken = (id) => {
 }
 
 
+const getUserTweets = async (req, res) => {
+    const userID = req.params.id
+    
+    try {
+        console.log(userID)
+        const tweets = await Tweet.find({user: userID})
+        console.log(tweets)
+        
+        if(tweets.length === 0){
+            res.send('No tweets to show')
+        } else {
+            res.json(tweets)
+        }
+
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
 
 module.exports = {
     registerUser,
     loginUser,
+    getUserTweets
 }

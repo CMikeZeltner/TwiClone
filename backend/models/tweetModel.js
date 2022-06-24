@@ -14,11 +14,10 @@ const tweetSchema = mongoose.Schema({
         maxLength: [240, 'Max tweet length is 240 characters']
     },
     likes: {
-        type: [{
-            type: Number,
-            default: 0
-    }]
-    }
+        type: Number,
+        default: 0
+    },
+    likeList: [mongoose.Types.ObjectId]
 },
 {
     timestamps: true

@@ -1,5 +1,6 @@
 import { useAuthStatus } from "../hooks/useAuthStatus";
 import { Navigate, Outlet } from "react-router-dom";
+import Login from "../pages/Login";
 
 
 function LoggedInRoutes() {
@@ -10,10 +11,11 @@ function LoggedInRoutes() {
     return 'Hey'
   }
 
+  console.log(loggedIn)
   if(loggedIn){
     return <Outlet />
   } else{
-    <Navigate to='/login' />
+    return <Navigate to='/login' />
   }
 }
 export default LoggedInRoutes
