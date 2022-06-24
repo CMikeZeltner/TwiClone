@@ -1,6 +1,11 @@
 const express = require('express')
 const router = express.Router()
+const {protect} = require('../middleware/authMiddleware')
+const {createTweet} = require('../controllers/tweetController')
 
-//router.use('/tweet')
-//.post(sendTweet)
-//.delete(deleteTweet)
+router.route('/tweet')
+.post(protect, createTweet)
+
+
+
+module.exports = router

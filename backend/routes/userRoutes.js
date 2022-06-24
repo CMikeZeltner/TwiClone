@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const {registerUser, loginUser, logoutUser, test} = require('../controllers/userController')
+const {registerUser, loginUser} = require('../controllers/userController')
 const {validatePassword} = require('../middleware/registerMiddleware')
+
 
 
 router.route('/register') 
@@ -11,9 +12,8 @@ router.route('/login')
 .post(loginUser)
 
 
-router.get('/test1', (req, res) => {
-    console.log(req.body)
-})
+
+
 
 
 

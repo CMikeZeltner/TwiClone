@@ -17,11 +17,12 @@ function App() {
             <Route path='/' element={<Home />} />
           </Route>
 
+          <Route path='/' element={<LoggedInRoutes />}>
             <Route path='/home' element={<Home />} />
-          
+          </Route>
 
 
-              <Route path='/register' element={<Register />} />
+            <Route path='/register' element={<Register />} />
 
             <Route path='/login' element={<Login />} />
 

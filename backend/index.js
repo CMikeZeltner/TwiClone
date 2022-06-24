@@ -10,6 +10,7 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
+app.use('/', require('./routes/tweetRoutes'))
 app.use('/', require('./routes/userRoutes'))
 
 

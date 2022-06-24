@@ -7,6 +7,7 @@ const validatePassword = (req, res, next) => {
     if(password.length < 8 || password.length > 16){
         throw new Error('Invalid password')
     }
+    
     next()
 }
 
