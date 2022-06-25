@@ -1,5 +1,8 @@
 import {useState, useEffect} from 'react'
 import {useSelector} from 'react-redux'
+import NavBar from '../components/NavBar'
+import TweetFeed from '../components/TweetFeed'
+import FollowBar from '../components/FollowBar'
 
 function Home() {
 
@@ -18,9 +21,11 @@ function Home() {
 
 
   return (
-    <>
-      <div>Home</div>
-    </>
+    <div className='home-container'>
+      <NavBar />
+      <TweetFeed />
+      <FollowBar />
+    </div>
   )
 }
 export default Home
