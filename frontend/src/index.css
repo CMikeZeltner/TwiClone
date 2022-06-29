@@ -1,5 +1,7 @@
 
 /* Login/Register page styles */
+
+
 h1{
   font-size: 48px;
   font-weight: bold;
@@ -85,17 +87,29 @@ span{
 }
 
 
+/*Home Page/Profile Page Styles*/
+
+.home-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  height: 300vh;
+}
+
+
 .root-navbar-container{
   height: 100vh;
-  width: 25vw;
+  width: 251px;
   display: flex;
   justify-content: flex-end;
-  border: 1px solid white;
 
 }
 
 .navbar-container{
   margin-right: 15px;
+  position: fixed;
 }
 
 .navbar-link{
@@ -116,8 +130,10 @@ span{
   text-decoration: none;
   color: white
 }
+
+
 .navbar-link:hover{
-  background-color: rgba(255, 255, 255, .2);
+  background-color: rgba(255, 255, 255, .1);
 }
 
 .navbar-icon{
@@ -127,21 +143,28 @@ span{
   margin-right: 10px;
 }
 
-.followbar-root-container{
-  width: 30vw;
-  border: 1px solid white;
-
-}
 
 .tweetfeed-root-container{
-  width: 45vw;
+  width: 598px;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.latest-tweets-sticky{
+  position: fixed;
+  
+}
+
+.followbar-container{
+  width: 350px;
+  height: 246px;
   border: 1px solid white;
+  position: fixed;
+
 }
 
 
-.home-container{
-  display: flex;
-  flex-direction: row;
-  background-color: black;
-  color: white;
-}
+
+
+
+

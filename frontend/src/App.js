@@ -3,8 +3,9 @@ import Login from "./pages/Login";
 import Logout from './pages/Logout';
 import Home from './pages/Home';
 import Register from "./pages/Register";
+import ProfilePage from "./pages/ProfilePage";
 import LoggedInRoutes from './components/LoggedInRoutes';
-import LoggedOutRoutes from './components/LoggedOutRoutes';
+
 
 function App() {
   return (
@@ -14,11 +15,15 @@ function App() {
         <Routes>
 
           <Route path='/' element={<LoggedInRoutes />}>
-            <Route navigate='/home' element={<Home />} />
+            <Route path='/home' element={<Home />} />
           </Route>
 
-          <Route path='/' element={<LoggedInRoutes />}>
+          <Route path='/home' element={<LoggedInRoutes />}>
             <Route path='/home' element={<Home />} />
+          </Route>
+
+          <Route path='/:id' element={<LoggedInRoutes />}>
+            <Route path='/:id' element={<ProfilePage />} />
           </Route>
 
 

@@ -4,13 +4,11 @@ import NavBar from '../components/NavBar'
 import TweetFeed from '../components/TweetFeed'
 import FollowBar from '../components/FollowBar'
 
-function Home() {
+function ProfilePage() {
 
   
 
   const {user} = useSelector((state) => state.auth)
-
-
 
 
   return (
@@ -21,4 +19,4 @@ function Home() {
     </div>
   )
 }
-export default Home
+export default ProfilePage

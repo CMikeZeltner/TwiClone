@@ -24,7 +24,11 @@ const userSchema = mongoose.Schema({
         type: String,
         required: [true, 'Enter a password between 8 and 16 characters'],
         minLength: [8, "Password must be between 8 and 16 characters"],
-    }
+    },
+    following: {
+        type: [mongoose.Types.ObjectId],
+        default: []
+    },
 },
 {
     timestamps: true

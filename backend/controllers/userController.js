@@ -87,9 +87,7 @@ const getUserTweets = async (req, res) => {
     const userID = req.params.id
     
     try {
-        console.log(userID)
         const tweets = await Tweet.find({user: userID})
-        console.log(tweets)
         
         if(tweets.length === 0){
             res.send('No tweets to show')

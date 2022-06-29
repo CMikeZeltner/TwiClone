@@ -17,7 +17,10 @@ const tweetSchema = mongoose.Schema({
         type: Number,
         default: 0
     },
-    likeList: [mongoose.Types.ObjectId]
+    likeList: {
+        type: [mongoose.Types.ObjectId],
+        default: []
+    },
 },
 {
     timestamps: true
