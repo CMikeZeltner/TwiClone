@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import {useSelector, useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import {BsHurricane} from 'react-icons/bs'
 import {register} from '../features/auth/authSlice'
 
@@ -79,7 +79,7 @@ function Register() {
                 placeholder='Password'
                 value={password} 
                 onChange={onChange}/>
-                <button type='submit'>Submit</button>
+                <button className='btn btn-submit' type='submit'>Submit</button>
             </form>
         <span>Already have an account? <a href='/login'>Log in here!</a></span>
         </div>

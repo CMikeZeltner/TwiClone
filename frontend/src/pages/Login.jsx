@@ -80,7 +80,7 @@ function Login() {
                 value={password}
                 placeholder='Enter your password' 
                 onChange={onChange}/>
-                <button type='submit'>Submit</button>
+                <button className='btn btn-submit' type='submit'>Submit</button>
             </form>
             <span>Don't have an account? <a href='/register'>Register here!</a></span>
         </div>
