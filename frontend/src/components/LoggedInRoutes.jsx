@@ -11,7 +11,6 @@ function LoggedInRoutes() {
     return 'Hey'
   }
 
-  console.log(loggedIn)
   if(loggedIn){
     return <Outlet />
   } else{

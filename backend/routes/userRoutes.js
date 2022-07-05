@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const {registerUser, loginUser, getUserTweets} = require('../controllers/userController')
+const {registerUser, loginUser} = require('../controllers/userController')
 const {validatePassword} = require('../middleware/registerMiddleware')
+
 
 
 
@@ -11,17 +12,9 @@ router.route('/register')
 router.route('/login') 
 .post(loginUser)
 
-router.route('/:id') 
-.get(getUserTweets)
+const tweetRouter = require('./tweetRoutes')
+router.use('/', tweetRouter)
 
-
-
-
-
-
-// router.get('/:userName', (req, res) => {
-//     res.send('asdasd')
-// })
 
 
 module.exports = router

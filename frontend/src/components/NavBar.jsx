@@ -7,7 +7,7 @@ function NavBar() {
         <nav className='navbar-container'>
             <div className='navbar-link'>
                 
-                <a href="/home"><BsHurricane className='navbar-icon'/></a>
+                <a href="/home"><BsHurricane className='navbar-icon nav-logo'/></a>
             </div>
             <div className='navbar-link'>
                 <FaHome className='navbar-icon'/>

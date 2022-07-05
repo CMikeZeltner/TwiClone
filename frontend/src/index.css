@@ -141,24 +141,21 @@ span{
 }
 
 .navbar-container{
-  width: 251px;
-  margin-right: 5px;
   position: fixed;
-  
-
 }
 
 .navbar-link{
   background-color: black;
   color: white;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   font-size: 20px;
   border-radius: 100px;
-  width: 132px;
   height: 52px;
-  padding-right: 10px
+  padding-left: 10px;
+  padding-right: 20px;
+  margin-right: 20px;
 }
 
 .navbar-link > a{
@@ -187,6 +184,8 @@ span{
   flex-grow: 0;
   border-right: 1px solid white;
   border-left: 1px solid white;
+  display: flex;
+  flex-direction: column;
 }
 
 .latest-tweets-sticky{
@@ -246,15 +245,19 @@ span{
 }
 
 .msgbox-root-container{
-  margin-top: 40px;
+  margin: 55px 0 10px 0;
+  padding-left: 15px;
+  padding-right: 15px;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  border-bottom: 1px solid white;
 }
 
 .textarea-submit{
   display: flex;
   flex-direction: column;
-  margin-left: 10px;
+  padding-bottom: 10px;;
 }
 
 .textarea-submit > button{
@@ -263,13 +266,33 @@ span{
 }
 
 textarea{
-  width: fit-content;
+  width: 475px;
   height: 100px;
   background-color: black;
   color: white;
-  font-size: 20px;
+  font-size: 18px;
+  border: none;
+  margin-left: 10px;
   resize: none;
+  overflow: auto;
+}
+
+textarea:focus{
+  outline: none;
+  border: none;
 }
 
 
+.tweet-counter{
+  text-align: end;
+  padding-right: 5px;
+}
 
+.tweet{
+  width: 598px;
+  font-size: 20px;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  text-align: center;
+  padding: 20px 0px;
+}

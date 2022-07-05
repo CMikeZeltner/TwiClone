@@ -83,28 +83,10 @@ const generateToken = (id) => {
 }
 
 
-const getUserTweets = async (req, res) => {
-    const userID = req.params.id
-    
-    try {
-        const tweets = await Tweet.find({user: userID})
-        
-        if(tweets.length === 0){
-            res.send('No tweets to show')
-        } else {
-            res.json(tweets)
-        }
-
-    } catch (error) {
-        console.log(error)
-    }
-
-}
 
 
 
 module.exports = {
     registerUser,
     loginUser,
-    getUserTweets
 }

@@ -42,9 +42,7 @@ export const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        reset: (state) => {
-            state.user = null
-        }
+
     }
 })
 

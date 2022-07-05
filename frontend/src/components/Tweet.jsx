@@ -1,6 +1,9 @@
-function Tweet({message}) {
+function Tweet({tweet}) {
+
   return (
-    <div>{message}</div>
+    <div>
+        <h1 className='tweet'>{tweet.message}</h1>
+    </div>
   )
 }
 export default Tweet
