@@ -83,24 +83,7 @@ const generateToken = (id) => {
 }
 
 
-const getTweetUser = async (req, res) => {
-    const userID = req.params.id
 
-    try {
-        const user = await User.findOne({_id: userID}).select(['-password', '-email'])
-
-        if(!user){
-            throw new Error('User does not exist')
-        }  
-
-        console.log('usercontroller: ' + user.userName)
-        res.json(user.userName)
-    } catch (error) {
-        console.log(error)
-    }
-
-    
-}
 
 
 
@@ -108,5 +91,4 @@ const getTweetUser = async (req, res) => {
 module.exports = {
     registerUser,
     loginUser,
-    getTweetUser
 }
