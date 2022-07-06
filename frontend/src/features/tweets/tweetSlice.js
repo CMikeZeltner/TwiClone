@@ -20,13 +20,11 @@ export const createTweet = createAsyncThunk('/tweet', async(message, thunkAPI) =
     }
 })
 
-export const getUserTweets = createAsyncThunk('/:userName', async(_, thunkAPI) => {
+export const getUserTweets = createAsyncThunk('/:userName', async(userName, thunkAPI) => {
+    const newUserName = userName.replace('/', '')
 
-    let userName = window.location.pathname
-    userName = userName.replace('/', '')
-    console.log('userName ' + userName)
     try {
-        return await tweetService.getUserTweets(userName)
+        return await tweetService.getUserTweets(newUserName)
     } catch (error) {
         console.log(error)
         
@@ -49,18 +47,21 @@ export const getSingleTweet = createAsyncThunk('/:userName/:id', async(tweetID, 
     
 })
 
-export const getFollowedTweets = createAsyncThunk('/home', async(_, thunkAPI) => {
+export const getFollowedTweets = createAsyncThunk('/home', async(userID, thunkAPI) => {
 
     try {
-        return await tweetService.getSingleTweet()
+        return await tweetService.getFollowedTweets(userID)
     } catch (error) {
-        console.log('hey')
+        console.log(error)
         
         return thunkAPI.rejectWithValue(error)
     }
 
     
 })
+
+
+
 
 
 

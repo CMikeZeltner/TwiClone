@@ -28,10 +28,8 @@ const {tweets, isLoading, isSuccess} = useSelector((state) => state.tweets)
   useEffect(() => {
    if(window.location.pathname === '/home'){
       dispatch(getFollowedTweets())
-      console.log('bbb')
    } else {
-      dispatch(getUserTweets())
-      console.log('aaaaa')
+      dispatch(getUserTweets(window.location.pathname))
    }
   }, [dispatch])
 
@@ -48,7 +46,7 @@ const {tweets, isLoading, isSuccess} = useSelector((state) => state.tweets)
     <div className='tweetfeed-root-container'>
       <h2 className='latest-tweets-sticky'>{window.location.pathname === '/home' ? 'Latest Tweets' : user.displayName}</h2>
       <MessageBox />
-      {tweets.length === 0 ? <h2>No tweets to show</h2> : 
+      {tweets === undefined ? <h2>No tweets to show</h2> : 
       tweets.map((tweet) => (
         <Tweet key={tweet._id}
         tweet={tweet} />

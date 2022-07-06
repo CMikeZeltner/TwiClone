@@ -12,6 +12,19 @@ const validatePassword = (req, res, next) => {
 }
 
 
+//Checks to see if username is not restricted 
+const validateUsername = (req, res, next) => {
+    const {userName} = req.body
+    if(userName === 'login' || userName === 'home' || 
+    userName === 'register' || userName === 'logout'){
+        throw new Error('Restricted username')
+    }
+
+    next()
+}
+
+
 module.exports = {
-    validatePassword
+    validatePassword,
+    validateUsername
 }

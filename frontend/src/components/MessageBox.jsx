@@ -36,10 +36,10 @@ const [tweet, setTweet] = useState('')
   const handleSubmit = (e) => {
     console.log('!!! ' + tweet)
     e.preventDefault()
-    if(tweet.length <= 140){
-      console.log('tweet' + tweet)
-        dispatch(createTweet(tweet))
-    }
+    if(tweet.length <= 140 && tweet.trim().length > 0){
+        
+      dispatch(createTweet(tweet))
+    } 
   }
 
 

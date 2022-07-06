@@ -22,6 +22,7 @@ const createTweet = asyncHandler(async (req, res) => {
 
     const tweet = await Tweet.create({
         user: user._id,
+        userName: user.userName,
         message,
         likes: 0
     })
@@ -140,6 +141,12 @@ const getFollowedTweets = async (req, res) => {
 
 }
 
+const likeTweet = async (req, res) => {
+    console.log(req)
+
+
+}
+
 
 
 module.exports = {
@@ -147,5 +154,6 @@ module.exports = {
     deleteTweet,
     getUserTweets,
     getSingleTweet,
-    getFollowedTweets
+    getFollowedTweets,
+    likeTweet
 }

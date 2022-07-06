@@ -1,16 +1,19 @@
 const express = require('express')
 const router = express.Router()
-const {registerUser, loginUser} = require('../controllers/userController')
-const {validatePassword} = require('../middleware/registerMiddleware')
+const {registerUser, loginUser, getTweetUser} = require('../controllers/userController')
+const {validatePassword, validateUsername} = require('../middleware/registerMiddleware')
 
 
 
 
 router.route('/register') 
-.post(validatePassword, registerUser)
+.post(validatePassword, validateUsername, registerUser)
 
 router.route('/login') 
 .post(loginUser)
+
+router.route('/user/:id')
+.get(getTweetUser)
 
 const tweetRouter = require('./tweetRoutes')
 router.use('/', tweetRouter)
