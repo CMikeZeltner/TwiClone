@@ -1,15 +1,18 @@
 const mongoose = require('mongoose')
+const User = require('./userModel')
 
 
 const tweetSchema = mongoose.Schema({
     user: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'User'
-    },
-    userName: {
-        type: String,
-        require: true,
+        userID: {
+            type: mongoose.Types.ObjectId,
+        },
+        userName: {
+            type: String
+        },
+        displayName: {
+            type: String
+        }
     },
     message: {
         type: String,
@@ -25,11 +28,13 @@ const tweetSchema = mongoose.Schema({
         type: [mongoose.Types.ObjectId],
         default: []
     },
+    tweetURL : {
+        type: String,
+    }
 },
 {
     timestamps: true
 })
-
 
 
 module.exports = mongoose.model('Tweet', tweetSchema)

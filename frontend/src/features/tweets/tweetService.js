@@ -1,26 +1,26 @@
 import axios from 'axios'
 
 
-const createTweet = async (message, token) => {
+const createTweet = async (userIDMessage, token) => {
     const config = {
         headers: {
             Authorization: `Bearer ${token}`
         }
 
     }
-    const response = await axios.post('/tweet', {message: message}, config)
+    const response = await axios.post('/tweet', userIDMessage, config)
     return response.data
 }
 
 
 const getUserTweets = async (userName) => {
-    console.log('AAAAAA')
     const response = await axios.get(userName)
+    console.log(response.data)
     return response.data
 }
 
-const getSingleTweet = async (tweetID) => {
-    const response = await axios.get(tweetID)
+const getSingleTweet = async (userNameTweetID) => {
+    const response = await axios.get(userNameTweetID)
     return response.data
 }
 
@@ -29,6 +29,18 @@ const getSingleTweet = async (tweetID) => {
 const getFollowedTweets = async (userID) => {
     console.log('in getfollowedtweets')
 }
+
+// const likeTweet = async(tweetID, token) => {
+//     console.log('hey')
+
+//     const config = {
+//         headers: {
+//             Authorization: `Bearer ${token}`
+//         }
+
+//     }
+//     const response = await axios.post(`/${userID}/${tweetID}/like`, {message: message}, config)
+// }
 
 
 const tweetService = {

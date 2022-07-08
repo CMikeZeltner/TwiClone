@@ -1,23 +1,25 @@
 import {FaHeart} from 'react-icons/fa'
-import {useDispatch} from 'react-redux'
+//import {useDispatch} from 'react-redux'
 
 function Tweet({tweet}) {
 
+  // const dispatch = useDispatch()
 
-  const tweetPagePath = '/' + tweet.userName + '/' + tweet._id
 
-  const handleClick = () => {
-    console.log(tweet)
+  const likeTweet = (e) => {
+    e.preventDefault()
   }
 
 
 
   return (
     <div className='tweet'>
-      <a href={tweetPagePath}>
+      <a href={tweet.tweetURL}>
         <h1>{tweet.message}</h1>
-        <FaHeart onClick={handleClick}/>
-         </a>
+      </a>  
+        <button onSubmit={likeTweet}><FaHeart/></button>
+        
+         
     </div>
   )
 }

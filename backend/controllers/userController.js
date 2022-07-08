@@ -3,6 +3,7 @@ const User = require('../models/userModel')
 const Tweet = require('../models/tweetModel')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const { findByIdAndUpdate } = require('../models/userModel')
 
 
 const registerUser = asyncHandler(async (req, res) => {
@@ -50,7 +51,8 @@ const registerUser = asyncHandler(async (req, res) => {
             _id: user._id,
             userName: user.userName,
             displayName: user.displayName,
-            email: user.email
+            email: user.email,
+            token: generateToken(user._id)
         })
     }
     
@@ -83,6 +85,14 @@ const generateToken = (id) => {
 }
 
 
+const followUser = async (req, res) => {
+
+    console.log(req.body)
+    //const user = findByIdAndUpdate(userID, {"$push": { "following": }} )
+
+}
+
+
 
 
 
@@ -91,4 +101,5 @@ const generateToken = (id) => {
 module.exports = {
     registerUser,
     loginUser,
+    followUser,
 }

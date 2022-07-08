@@ -28,7 +28,10 @@ const logout = () => {
 }
 
 
-
+const followUser = async (users) => {
+    const response = await axios.post(':userName/follow', users)
+    return response.data
+}
 
 
 
@@ -36,7 +39,8 @@ const logout = () => {
 const authService = {
     register,
     login,
-    logout
+    logout,
+    followUser
 }
 
 export default authService

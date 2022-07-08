@@ -7,7 +7,8 @@ import { createTweet, reset } from "../features/tweets/tweetSlice"
 
 function MessageBox() {
 
- // const {user} = useSelector((state) => state.auth)
+const {user} = useSelector((state) => state.auth)
+
 const {isLoading, isSuccess} = useSelector((state) => state.tweets)
 const [tweet, setTweet] = useState('')
 
@@ -34,11 +35,10 @@ const [tweet, setTweet] = useState('')
 
 
   const handleSubmit = (e) => {
-    console.log('!!! ' + tweet)
     e.preventDefault()
+
     if(tweet.length <= 140 && tweet.trim().length > 0){
-        
-      dispatch(createTweet(tweet))
+      dispatch(createTweet({userID: user._id, message: tweet}))
     } 
   }
 

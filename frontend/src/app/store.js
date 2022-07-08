@@ -5,6 +5,6 @@ import tweetReducer from '../features/tweets/tweetSlice'
 export const store = configureStore({
     reducer: {
         auth: authReducer,
-        tweets: tweetReducer
+        tweets: tweetReducer,
     }
 })

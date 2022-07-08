@@ -5,7 +5,7 @@ import {useSelector} from 'react-redux'
 function NavBar() {
 
     const {user} = useSelector((state) => state.auth)
-    const username = user.userName
+    const userName = user.userName
     
     
   return (
@@ -21,7 +21,7 @@ function NavBar() {
             </div>
             <div className='navbar-link'>
                 <BsPersonFill className='navbar-icon'/>
-                <a href={username}>Profile</a>
+                <a href={`/${userName}`}>Profile</a>
             </div>
 
         </nav>
