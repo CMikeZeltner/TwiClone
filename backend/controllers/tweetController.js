@@ -65,7 +65,6 @@ const deleteTweet = asyncHandler(async (req, res) => {
 //@desc Get all tweets from one user (For profile pages)
 //@route GET /:userName/
 const getUserTweets = async (req, res) => {
-    console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
     try {
         const tweets = await Tweet.find({"user.userName": req.params.userName})
         

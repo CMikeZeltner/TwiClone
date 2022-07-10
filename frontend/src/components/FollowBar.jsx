@@ -8,7 +8,7 @@ function FollowBar() {
             <h2>Who to follow</h2>
 
             <div className='follow-account-container'>
-              <FaUser className='testtest'/>
+              <FaUser className='followbar-profile-icon'/>
               <div className='followbar-names'>
                 <h3>Display Name</h3>
                 <h4>UserName</h4>
@@ -16,7 +16,7 @@ function FollowBar() {
               <button className='btn btn-follow'>Follow</button>
             </div>
             <div className='follow-account-container'>
-              <FaUser className='testtest'/>
+              <FaUser className='followbar-profile-icon'/>
               <div className='followbar-names'>
                 <h3>Display Name</h3>
                 <h4>UserName</h4>
@@ -24,7 +24,7 @@ function FollowBar() {
               <button className='btn btn-follow'>Follow</button>
             </div>
             <div className='follow-account-container'>
-              <FaUser className='testtest'/>
+              <FaUser className='followbar-profile-icon'/>
               <div className='followbar-names'>
                 <h3>Display Name</h3>
                 <h4>UserName</h4>

@@ -51,7 +51,15 @@ const {tweets, isLoading, isSuccess} = useSelector((state) => state.tweets)
   return (
     <div className='tweetfeed-root-container'>
 
+      <div className='latest-tweets-sticky'>
+        <a href="/home"><FaArrowLeft className='sticky-back-button'/></a>
+        <div className='sticky-username-tweet-count'>
+        <h2>Mike</h2>
+        <h3>1 Tweet</h3>
+        </div>
+      </div>
 
+      <ProfileInfoBox />
       
 
 

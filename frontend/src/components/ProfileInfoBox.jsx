@@ -12,16 +12,20 @@ function ProfileInfoBox() {
       }}/>
       <div className='profile-username-displayname'>
         <h2>Display Name</h2>
-        <h3>@User Name</h3>
+        <h3>@UserName</h3>
       </div>
 
-      <p className='profile-description'>profile description</p>
+      <p className='profile-description'>profile description </p>
 
       <div className='profile-location-join-date'>
+        <div className='profile-location-join-individual-div'>
         <FaMapMarker className='profile-info-svg'/>
         <span>United States</span>
+        </div>
+        <div className='profile-location-join-individual-div'>
         <FaCalendar className='profile-info-svg'/>
         <span>Joined March 2020</span>
+        </div>
       </div>
 
       <div className='profile-following-followers'>
