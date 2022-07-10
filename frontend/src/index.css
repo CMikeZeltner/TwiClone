@@ -1,284 +1,427 @@
-/* Login/Register page styles */
-
-h1 {
-	font-size: 48px;
-	font-weight: bold;
-	margin-top: 10px;
-	margin-bottom: 25px;
+body {
+	font-family: Arial, Helvetica, sans-serif;
 	color: white;
+	background-color: black;
+}
+
+
+
+
+.title-form-container{
+	display: flex;
+	flex-direction: column;
+	
+}
+
+.title-form-container > h1 {
+	margin: 0 2rem;
+	margin-bottom: 2rem;
+	font-size: 26px;
+	font-weight: 700;
 }
 
 .login-register-container {
-	text-align: center;
-	height: 100vh;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(assets/cyclone-background5.jpg);
-	background-size: cover;
-	background-position: center;
 	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-span > a {
-	color: #1da1f2;
-	text-decoration: none;
-}
-
-.title-form-container {
-	background-color: rgba(0, 0, 0, .5);
-	height: 500px;
-	width: 500px;
+	flex-direction: column;
+	flex-basis: 3;
 }
 
 .login-register-form {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	margin-bottom: 25px;
-}
-
-.login-register-form > input {
-	height: 25px;
-	width: 250px;
-	font-size: 15px;
-	margin-bottom: 15px;
-}
-
-.login-register-form > label {
-	display: none;
-}
-
-.btn {
-	cursor: pointer;
-	border: none;
-
-	border-radius: 50px;
-}
-
-.btn-submit {
-	background-color: rgba(50, 205, 50, 1);
-	font-weight: bold;
-	color: rgba(255, 255, 255, .9);
-	width: 225px;
-	height: 35px;
-	font-size: 18px;
-}
-
-.btn-submit:hover {
-	background-color: rgba(50, 205, 50, .9);
-}
-
-.btn-follow {
-	width: 76px;
-	height: 32px;
-}
-
-.btn-follow:hover {
-	background-color: rgba(255, 255, 255, .9);
-}
-
-.btn-tweet {
-	width: 76px;
-	height: 32px;
-	background-color: rgba(50, 205, 50, 1);
-	color: white;
-	font-weight: bold;
-	font-size: 15px;
-}
-
-.btn-tweet:hover {
-	background-color: rgba(50, 205, 50, .9);
+	margin: 0 1.5rem;
 }
 
 .logo {
-	position: absolute;
-	top: 5%;
-	left: 5%;
-	height: 75px;
-	width: 75px;
-	background-color: rgba(0, 0, 0, .5);
-	border-radius: 75px;
-	padding: 10px;
-	color: white;
+	align-self: center;
+	height: 2.2rem;
+	width: 2.2rem;
+	min-width: 2.2rem;
+	min-height: 2.2rem;
+	margin-top:.5rem;
+	margin-bottom: 1.5rem;
 }
 
-h2 {
-	font-size: 20px;
+.label-input {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid grey;
+	margin-bottom: 1.5rem;
+	padding: .5rem;
+	border-radius: 5px;
+}
+
+.label-input:focus-within {
+	border-color: #1da1f2;
+	border-width: 2px;
+	padding: .4rem;
+}
+
+
+.label-input-email {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid grey;
+	margin-bottom: 1.5rem;
+	padding: .5rem;
+	border-radius: 5px;
+}
+
+.label-input-email:focus-within {
+	border-color: #1da1f2;
+	border-width: 2px;
+	padding: .4rem;
+}
+
+.label-input-eye {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: .5rem;
+	border: 1px solid grey;
+	border-radius: 5px;
+}
+
+.label-input-eye:focus-within {
+	border-color: #1da1f2;
+	border-width: 2px;
+	padding: .4rem;
+}
+
+.label-input-password {
+	display: flex;
+	flex-direction: column;
+	min-width: 20%;
+	width: 100%;
+	flex-shrink: 3;
+}
+
+.password-toggle {
+	margin: 0 .5rem;
+	height: 18px;
+	width: 18px;
+	min-width: 18px;
+	flex-shrink: 0;
+}
+
+label {
+	font-size: 13px;
+	margin-bottom: .5rem;
+}
+
+input {
+	border: none;
+	background-color: black;
+	color: white;
+	font-size: 15px;
+
+}
+
+input:focus {
+	outline: none;
+}
+
+.btn {
+	border-radius: 11rem;
+	font-size: 1rem;
+	font-weight: 700;
+	border: none;
+}
+
+.btn-submit {
+	width: 88%;
+	height: 3rem;
+	margin: 2rem;
+	align-self: center;
+	position:absolute;
+	bottom: 3rem;
+}
+
+.title-form-container > span{
+	display: block;
+	margin: 2rem;
+	font-size: 14px;
+	color: rgba(255,255,255, .4);
+	position:absolute;
+	bottom: -.5rem;
+}
+
+a{
+	color: #1da1f2;
+	text-decoration: none;
+}
+
+a:visited{
+	color: #1da1f2;
+}
+
+.app-container{
+	display: flex;
+	flex-direction: column;
+	
+}
+
+.root-navbar-container{
+	position: absolute;
+	bottom: 0;
+
+}
+
+.navbar-container{
+	display: flex;
+	width: 100%;
+}
+
+.navbar-link:first-of-type{
+	display: none;
+}
+
+.navbar-link{
+	border-top: 1px solid white;
+	height: 10vh;
+	width: 50vw;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+
+.navbar-icon{
+	height: 26px;
+	width: 26px;
+}
+
+.nav-text{
+	display: none;
+}
+
+
+
+
+.messagebox-root-container{
+	width: 100%;
+}
+
+.tweet-root-container{
+	width: 100%;
+	border-bottom: 1px solid white;
+	border-bottom: 1px solid white;
+	display: flex;
+	flex-direction: row;
+}
+
+.tweet-content-container{
+	width: 100%;
+	padding-left: 1rem;
+}
+
+.tweet-content-container > p {
+	padding: .4rem 0rem;
+}
+
+.tweet-profile-pic{
+	height: 48px;
+	width: 48px;
+	border: 1px solid white;
+	border-radius: 50px;
+	margin-top: .2rem;
+	margin-left: .5rem
+}
+
+.tweet-names{
+	display: flex;
+	padding: .5rem 0 0 0;
+}
+
+.tweet-names > h2:nth-of-type(1) {
 	font-weight: bold;
 }
 
-span {
-	font-size: 18px;
-	color: rgba(255, 255, 255, .9);
+.tweet-names > h2:nth-of-type(2) {
+	margin-left: .5rem;
+	color: rgb(113, 118, 123);
 }
 
-/*Home Page/Profile Page Styles*/
-
-.home-container {
+.tweet-interactions{
 	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	background-color: black;
-	color: white;
-	height: 300vh;
+	justify-content: space-between;
+	margin-right: .5rem;
+	margin-bottom: .5rem
 }
 
-.root-navbar-container {
-	height: 100vh;
-	display: flex;
-	justify-content: flex-end;
+.tweet-interaction-button{
+	height: 19px;
+	width: 19px;
 }
 
-.navbar-container {
-	position: fixed;
+.root-followbar-container{
+	display: none;
 }
 
-.navbar-link {
-	background-color: black;
-	color: white;
-	display: flex;
-	justify-content: flex-end;
+
+.latest-tweets-sticky{
+	position: sticky;
+	padding: .7rem 0rem .7rem 1rem;
+	background: rgba(255, 0, 0, .1);
+	display:flex;
 	align-items: center;
-	font-size: 20px;
-	border-radius: 100px;
-	height: 52px;
-	padding-left: 10px;
-	padding-right: 20px;
-	margin-right: 20px;
+	
 }
 
-.navbar-link > a {
-	text-decoration: none;
-	color: white;
-}
-
-.navbar-link:hover {
-	background-color: rgba(255, 255, 255, .1);
-}
-
-.navbar-icon {
-	width: 35px;
-	height: 35px;
-	fill: white;
-	margin-right: 10px;
-}
-
-.tweetfeed-root-container {
-	width: 598px;
-	min-width: 598px;
-	max-width: 598px;
-	flex-shrink: 0;
-	flex-grow: 0;
-	border-right: 1px solid white;
-	border-left: 1px solid white;
-	display: flex;
-	flex-direction: column;
-}
-
-.latest-tweets-sticky {
-	position: fixed;
-	width: 583px;
-	background-color: rgba(255, 255, 255, .1);
-	padding-left: 15px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
-
-.followbar-root-container {
-	display: flex;
-	flex-shrink: 1;
-}
-
-.followbar-container {
-	width: 350px;
-	height: 280px;
-	position: fixed;
-	margin-top: 15px;
-	margin-left: 15px;
-	background-color: rgba(255, 255, 255, .1);
-	border-radius: 3%;
-}
-
-.followbar-container > h2 {
-	margin-top: 12px;
-	margin-left: 20px;
-	margin-bottom: 10px;
-}
-
-.follow-account-container {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
-	align-items: center;
-
-	padding: 10px 5px;
-}
-
-.follow-account-container:hover {
-	background-color: rgba(0, 0, 0, .1);
-}
-
-.testtest {
-	height: 40px;
-	width: 40px;
-	border: 2px solid pink;
-	border-radius: 50px;
-}
-
-.msgbox-root-container {
-	margin: 55px 0 10px 0;
-	padding-left: 15px;
-	padding-right: 15px;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	border-bottom: 1px solid white;
-}
-
-.textarea-submit {
-	display: flex;
-	flex-direction: column;
-	padding-bottom: 10px;
-}
-
-.textarea-submit > button {
-	margin-top: 5px;
-	align-self: end;
-}
-
-textarea {
-	width: 475px;
-	height: 100px;
-	background-color: black;
-	color: white;
-	font-size: 18px;
-	border: none;
-	margin-left: 10px;
-	resize: none;
-	overflow: auto;
-}
-
-textarea:focus {
-	outline: none;
-	border: none;
-}
-
-.tweet-counter {
-	text-align: end;
-	padding-right: 5px;
-}
-
-.tweet {
-	width: 598px;
-	font-size: 20px;
-	border-top: 1px solid white;
-	border-bottom: 1px solid white;
-	text-align: center;
-	padding: 20px 0px;
-}
-
-.profile-info-root {
-	height: 250px;
+.sticky-username-tweet-count{
+	padding-left: 2rem;
 	width: 100%;
+}
+
+.sticky-username-tweet-count > h2{
+	font-weight: bold;
+	margin-bottom: .2rem;
+	
+}
+
+.sticky-username-tweet-count > h3{
+	font-size: 13px;
+	color: rgb(113, 118, 123);
+	
+}
+
+.sticky-back-button{
+	height: 20px;
+	width: 20px;
+	color: white;
+}
+
+.profile-info-root{
+	border-bottom: 1px solid white;	
+	
+}
+
+.profile-info-container{
+	padding-left: 1rem;
+}
+
+
+
+.profile-picture{
+	width: 98px;
+	height: 98px;
+	border-radius: 100px;
+	margin-bottom: 1rem;
+}
+
+.profile-username-displayname{
+	margin-bottom: 1rem;
+}
+
+.profile-username-displayname > h2{
+	font-weight: bold;
+	padding-bottom: .3rem;
+}
+
+.profile-username-displayname > h3{
+	color: rgb(113, 118, 123);
+}
+
+.profile-description{
+	margin-bottom: 1rem
+}
+
+.profile-location-join-date{
+	margin-bottom: 1rem;
+}
+
+.profile-location-join-date > .profile-info-svg:nth-of-type(2){
+	margin-left: 1rem;
+}
+
+.profile-info-svg{
+	height: 18px;
+	width: 18px;
+	margin-right: .2rem
+}
+
+.profile-following-followers{
+	margin-bottom: 1rem;
+}
+
+.profile-following-followers > span:nth-child(2){
+	margin-left: 1rem;
+}
+
+.profile-num-follow{
+	font-weight: bold;
+}
+
+
+
+
+@media (min-width: 708px) {
+
+	body{
+		color: pink;
+	}
+	
+	.login-register-root-container{
+		display: flex;
+		justify-content: center;
+		
+		
+		
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		overflow: hidden;
+		
+	}
+
+
+	.title-form-container > h1 {
+		text-align: center;
+	}
+
+	.login-register-container{
+		display: flex;
+		justify-content: center;
+		width: 600px;
+		height: 70vh;
+		min-height: 600px;
+		max-height: 800px;
+		border-radius: 10px;
+		background-color: black;
+		margin-top: 2rem;
+		border: 1px solid rgba(255, 255, 255, .2);
+		box-shadow: 0 0 15px rgba(255, 255, 255, .1);
+	}
+
+	.login-register-form{
+		display: flex;
+		align-items: center;
+	}
+
+	.label-input, .label-input-eye, .label-input-email{
+		width: 20rem;
+	}
+
+	.btn-submit{
+		position:static;
+		width: 21rem;
+		height: 2rem;
+		margin-bottom: 0px
+	}
+
+	span{
+		position: static;
+		text-align: center;
+	}
+
+
+	
+
+@media (min-width: 1000px){
+	
+}
+
+
+
 }

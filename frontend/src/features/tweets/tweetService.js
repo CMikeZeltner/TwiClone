@@ -15,7 +15,6 @@ const createTweet = async (userIDMessage, token) => {
 
 const getUserTweets = async (userName) => {
     const response = await axios.get(userName)
-    console.log(response.data)
     return response.data
 }
 

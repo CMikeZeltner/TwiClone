@@ -3,7 +3,7 @@ const User = require('../models/userModel')
 const Tweet = require('../models/tweetModel')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const { findByIdAndUpdate } = require('../models/userModel')
+const { findByIdAndUpdate, findOneAndUpdate } = require('../models/userModel')
 
 
 const registerUser = asyncHandler(async (req, res) => {
@@ -84,12 +84,21 @@ const generateToken = (id) => {
     })
 }
 
+const getUserInfo = async (req, res) => {
+    console.log(req.params)
+    const user = await User.findOne({userName: req.params.userName}).select(['-password', '-email'])
+    
+    if(!user){
+        throw new Error('User does not exist')
+    } else {
+        return user
+    }
+}
+
 
 const followUser = async (req, res) => {
 
-    console.log(req.body)
-    //const user = findByIdAndUpdate(userID, {"$push": { "following": }} )
-
+  
 }
 
 
@@ -102,4 +111,5 @@ module.exports = {
     registerUser,
     loginUser,
     followUser,
+    getUserInfo
 }

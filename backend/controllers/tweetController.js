@@ -32,7 +32,7 @@ const createTweet = asyncHandler(async (req, res) => {
         likes: 0,
     })
 
-    tweet.tweetURL = `/${user.userName}/${tweet._id}`
+    tweet.tweetURL = `/${user.userName}/status/${tweet._id}`
     await tweet.save()
 
     res.json(tweet)
@@ -65,7 +65,7 @@ const deleteTweet = asyncHandler(async (req, res) => {
 //@desc Get all tweets from one user (For profile pages)
 //@route GET /:userName/
 const getUserTweets = async (req, res) => {
-    
+    console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
     try {
         const tweets = await Tweet.find({"user.userName": req.params.userName})
         

@@ -27,7 +27,7 @@ function App() {
             <Route path='/:userName' element={<ProfilePage />} />
           
          
-            <Route path='/:userName/:id' element={<TweetPage />} />
+            <Route path='/:userName/status/:id' element={<TweetPage />} />
         
 
             <Route path='/register' element={<Register />} />

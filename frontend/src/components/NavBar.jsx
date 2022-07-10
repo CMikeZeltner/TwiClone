@@ -11,18 +11,22 @@ function NavBar() {
   return (
     <div className='root-navbar-container'>
         <nav className='navbar-container'>
-            <div className='navbar-link'>
+            
                 
-                <a href="/home"><BsHurricane className='navbar-icon nav-logo'/></a>
-            </div>
-            <div className='navbar-link'>
+            <a className='navbar-link' href="/home">
+                <BsHurricane className='navbar-icon nav-logo'/>
+            </a>
+            
+
+            <a href="/home" className='navbar-link'>
                 <FaHome className='navbar-icon'/>
-                <a href="/home">Home</a>
-            </div>
-            <div className='navbar-link'>
+                <span className='nav-text'>Home</span>
+            </a>
+
+            <a href={`/${userName}`} className='navbar-link'>
                 <BsPersonFill className='navbar-icon'/>
-                <a href={`/${userName}`}>Profile</a>
-            </div>
+                <span className='nav-text'>Profile</span>
+            </a>
 
         </nav>
         

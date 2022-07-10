@@ -6,16 +6,16 @@ const {createTweet, deleteTweet, getSingleTweet, getUserTweets, getFollowedTweet
 router.route('/tweet')
 .post(protect, createTweet)
 
-router.route('/:username/:id/delete')
+router.route('/:username/status/:id/delete')
 .delete(protect, deleteTweet)
 
-router.route('/:userName/:id/like')
+router.route('/:userName/status/:id/like')
 .post(likeTweet)
 
 router.route('/home')
 .get(getFollowedTweets)
 
-router.route('/:userName/:id') 
+router.route('/:userName/status/:id') 
 .get(getSingleTweet)
 
 

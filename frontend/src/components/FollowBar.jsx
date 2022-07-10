@@ -2,7 +2,7 @@ import {FaUser} from 'react-icons/fa'
 
 function FollowBar() {
   return (
-    <div className='followbar-root-container'>
+    <div className='root-followbar-container'>
 
         <div className='followbar-container'>
             <h2>Who to follow</h2>

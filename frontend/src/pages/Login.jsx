@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {BsHurricane} from 'react-icons/bs'
+import {FaEye} from 'react-icons/fa'
 import {login} from '../features/auth/authSlice'
 
 function Login() {
@@ -10,6 +11,8 @@ function Login() {
         email: '',
         password: ''
     })
+
+    const [showPassword, setShowPassword] = useState(false)
 
     const [loggedIn, setLoggedIn] = useState(false)
     
@@ -56,6 +59,7 @@ function Login() {
 
 
   return (
+    <div className='login-register-root-container'>
     <div className='login-register-container'>
         <BsHurricane className='logo'/>
         <div className='title-form-container'>
@@ -64,26 +68,40 @@ function Login() {
             <form className='login-register-form' 
             onSubmit={handleSubmit}>
                 
-                <label htmlFor="email">Email:</label>
+            <div className='label-input-email'>    
+                <label htmlFor="email">Email</label>
                 <input type="email" 
                 name='email' 
                 id='email' 
                 value={email} 
                 placeholder='Enter your Email address'
                 onChange={onChange} />
+            </div>    
                 
-                <label htmlFor="password">Password:</label>
+            <div className='label-input-eye'>
+            <div className='label-input-password'>    
+                <label htmlFor="password">Password</label>
                 <input 
-                type="password" 
+                type={showPassword === false ? 'password' : 'input'} 
                 name='password' 
                 id='password' 
                 value={password}
                 placeholder='Enter your password' 
                 onChange={onChange}/>
-                <button className='btn btn-submit' type='submit'>Submit</button>
+            </div>
+                <FaEye className='password-toggle'
+                onClick={() => showPassword === true ? setShowPassword(false) : setShowPassword(true)} 
+                style={{
+                    color: showPassword ? '#1da1f2' : 'white'
+                }}/>
+            </div>
+           
+
+                <button className='btn btn-submit' type='submit'>Log In</button>
             </form>
-            <span>Don't have an account? <a href='/register'>Register here!</a></span>
+            <span>Don't have an account? <a href='/register'>Sign up!</a></span>
         </div>
+    </div>
     </div>
   )
 }
