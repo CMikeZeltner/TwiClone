@@ -25,16 +25,30 @@ const userSchema = mongoose.Schema({
         required: [true, 'Enter a password between 8 and 16 characters'],
         minLength: [8, "Password must be between 8 and 16 characters"],
     },
+    tweetCount: {
+        type: Number,
+        default: 0,
+        min: 0
+    },
     following: {
-        type: [mongoose.Types.ObjectId],
+        type: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }],
         default: []
     },
     followers: {
-        type: [mongoose.Types.ObjectId],
+        type: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }],
         default: []
     },
     likeList: {
-        type: [mongoose.Types.ObjectId],
+        type: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }],
         default: []
     },
 },

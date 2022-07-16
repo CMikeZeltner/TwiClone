@@ -5,7 +5,6 @@ import Home from './pages/Home';
 import Register from "./pages/Register";
 import ProfilePage from "./pages/ProfilePage";
 import TweetPage from './pages/TweetPage';
-import FauxMessageBoxModal from './pages/FauxMessageBoxModal';
 import LoggedInRoutes from './components/LoggedInRoutes';
 
 
@@ -24,10 +23,7 @@ function App() {
             <Route path='/home' element={<Home />} />
           </Route>
 
-          <Route path='/compose/tweet' element={<LoggedInRoutes />}>
-            <Route path='/compose/tweet' element={<FauxMessageBoxModal />} />
-          </Route>
-
+        
           
             <Route path='/:userName' element={<ProfilePage />} />
           

@@ -20,7 +20,7 @@ router.route('/:userName/status/:id')
 
 
 
-router.route('/:userName')
+router.route('/:userName/tweets')
 .get(getUserTweets)
 
 

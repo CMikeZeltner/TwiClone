@@ -350,8 +350,66 @@ a:visited {
 }
 
 .msgbox-root-container {
-		display: none;
-	}
+	display: block;
+	border: 1px solid white;
+	width: inherit;
+	border: none;
+	border-bottom: 1px solid rgba(255, 255, 255, .7);
+}
+
+.msgbox-form {
+	display: flex;
+	padding: .5rem 1rem;
+}
+
+.textarea-submit{
+	width: 100%;
+	text-align: end;
+}
+
+textarea {
+	width: 100%;
+	height: 60px;
+	background-color: black;
+	border: none;
+	color: white;
+	font-size: 14px;
+	resize: none;
+}
+
+textarea:focus{
+	outline: none;
+}
+
+
+
+.tweet-counter{
+	text-align: end;
+}
+
+.btn-tweet{
+	margin-top: .5rem;
+	text-align: end;
+	padding: .5rem 1rem;
+	background-color: rgba(0, 186, 124, 1);
+	color: white;
+}
+
+.btn-tweet:disabled{
+	background: rgba(0, 186, 124, .4);
+	color: rgba(255, 255, 255, .4)
+}
+
+.msgbox-profile-icon{
+	height: 40px;
+	width: 40px;
+	border-radius: 30px;
+	flex-shrink: 0;
+	margin-right: .5rem;
+}
+
+
+
 
 @media (min-width: 500px) {
 	.nav-feed-follow-container {
@@ -400,64 +458,13 @@ a:visited {
 		border-right: 1px solid white;
 	}
 
-	.msgbox-root-container {
-		display: block;
-		border: 1px solid white;
-		width: inherit;
-		border: none;
-		border-bottom: 1px solid rgba(255, 255, 255, .7);
-	}
-
-	.msgbox-form {
-		display: flex;
-		padding: .5rem 1rem;
-	}
-
-	.textarea-submit{
-		width: 100%;
-		text-align: end;
-	}
 
 	textarea {
-		width: 100%;
 		height: 50px;
-		background-color: black;
-		border: none;
-		color: white;
 		font-size: 18px;
-		resize: none;
+
 	}
 
-	textarea:focus{
-		outline: none;
-	}
-
-
-
-	.tweet-counter{
-		text-align: end;
-	}
-
-	.btn-tweet{
-		margin-top: .5rem;
-		text-align: end;
-		padding: .5rem 1rem;
-		background-color: rgba(0, 186, 124, 1);
-		color: white;
-	}
-
-	.btn-tweet:disabled{
-		background: rgba(0, 186, 124, .4);
-		color: rgba(255, 255, 255, .4)
-	}
-
-	.msgbox-profile-icon{
-		height: 40px;
-		width: 40px;
-		border-radius: 30px;
-		flex-shrink: 0;
-		margin-right: .5rem;
-	}
 }
 
 @media (min-width: 708px) {

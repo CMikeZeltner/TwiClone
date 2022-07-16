@@ -15,7 +15,7 @@ router.route('/login')
 router.route('/:userName/follow')
 .post(followUser)
 
-router.route('/:userName/info')
+router.route('/:userName')
 .get(getUserInfo)
 
 // router.route('/user/:id')

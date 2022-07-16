@@ -1,6 +1,11 @@
 import {FaUser, FaMapMarker, FaCalendar} from 'react-icons/fa'
 
 function ProfileInfoBox() {
+
+
+
+
+
   return (
     <div className="profile-info-root">
 

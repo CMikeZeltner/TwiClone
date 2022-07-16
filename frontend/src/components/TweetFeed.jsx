@@ -16,6 +16,7 @@ const {tweets, isLoading, isSuccess} = useSelector((state) => state.tweets)
 
 
 
+
   const dispatch = useDispatch()
 
 
@@ -54,8 +55,8 @@ const {tweets, isLoading, isSuccess} = useSelector((state) => state.tweets)
       <div className='latest-tweets-sticky'>
         <a href="/home"><FaArrowLeft className='sticky-back-button'/></a>
         <div className='sticky-username-tweet-count'>
-        <h2>Mike</h2>
-        <h3>1 Tweet</h3>
+        <h2>{window.location.pathname === '/home' ? 'Latest Tweets' : user.userName}</h2>
+        <h3>{window.location.pathname === '/home' ? '' : '1 Tweet'}</h3>
         </div>
       </div>
 
