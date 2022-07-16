@@ -14,7 +14,7 @@ function Home() {
 
 
   return (
-    <div className='home-container'>
+    <div className='nav-feed-follow-container'>
       <NavBar />
       <TweetFeed />
       <FollowBar />

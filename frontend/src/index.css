@@ -135,7 +135,6 @@ input:focus {
 	font-size: 13px;
 	height: 30px;
 	width: 70px;
-	
 }
 
 .title-form-container > span {
@@ -350,17 +349,23 @@ a:visited {
 	font-weight: bold;
 }
 
+.msgbox-root-container {
+		display: none;
+	}
+
 @media (min-width: 500px) {
 	.nav-feed-follow-container {
 		display: flex;
 		flex-direction: row;
-		flex-grow: 0;
 	}
 
 	.root-navbar-container {
 		position: static;
+		display: flex;
+		justify-content: center;
 		top: 10px;
 		width: 60px;
+		margin-right: 1rem;
 	}
 
 	.navbar-container {
@@ -378,7 +383,7 @@ a:visited {
 	.navbar-link {
 		width: 50px;
 		height: 50px;
-		border-radius: 100%;
+		border-radius: 300px;
 		padding: 2px 2px;
 		border: none;
 		margin-bottom: 2rem;
@@ -393,6 +398,65 @@ a:visited {
 		max-width: 600px;
 		border-left: 1px solid white;
 		border-right: 1px solid white;
+	}
+
+	.msgbox-root-container {
+		display: block;
+		border: 1px solid white;
+		width: inherit;
+		border: none;
+		border-bottom: 1px solid rgba(255, 255, 255, .7);
+	}
+
+	.msgbox-form {
+		display: flex;
+		padding: .5rem 1rem;
+	}
+
+	.textarea-submit{
+		width: 100%;
+		text-align: end;
+	}
+
+	textarea {
+		width: 100%;
+		height: 50px;
+		background-color: black;
+		border: none;
+		color: white;
+		font-size: 18px;
+		resize: none;
+	}
+
+	textarea:focus{
+		outline: none;
+	}
+
+
+
+	.tweet-counter{
+		text-align: end;
+	}
+
+	.btn-tweet{
+		margin-top: .5rem;
+		text-align: end;
+		padding: .5rem 1rem;
+		background-color: rgba(0, 186, 124, 1);
+		color: white;
+	}
+
+	.btn-tweet:disabled{
+		background: rgba(0, 186, 124, .4);
+		color: rgba(255, 255, 255, .4)
+	}
+
+	.msgbox-profile-icon{
+		height: 40px;
+		width: 40px;
+		border-radius: 30px;
+		flex-shrink: 0;
+		margin-right: .5rem;
 	}
 }
 
@@ -488,5 +552,33 @@ a:visited {
 		width: 40px;
 		border: 2px solid pink;
 		border-radius: 50px;
+	}
+}
+
+@media (min-width: 1250px) {
+	.nav-feed-follow-container {
+		justify-content: center;
+	}
+
+	.root-followbar-container {
+		flex-grow: 1;
+		max-width: 444px;
+	}
+
+	.root-navbar-container {
+		width: 250px;
+	}
+
+	.navbar-link {
+		width: 150px;
+	}
+
+	.navbar-icon {
+		margin-right: .8rem;
+	}
+
+	.nav-text {
+		display: inline;
+		font-size: 20px;
 	}
 }

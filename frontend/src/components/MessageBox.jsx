@@ -11,6 +11,9 @@ const {user} = useSelector((state) => state.auth)
 
 const {isLoading, isSuccess} = useSelector((state) => state.tweets)
 const [tweet, setTweet] = useState('')
+const [length, setLength] = useState(140)
+const [danger, setDanger] = useState(false)
+const [disabled, setDisabled] = useState(true)
 
 
   const dispatch = useDispatch()
@@ -30,8 +33,28 @@ const [tweet, setTweet] = useState('')
       }
   }, [dispatch, isLoading])
 
+  useEffect(() => {
+
+    if(tweet.length > 0 && tweet.trim().length !== 0){
+      setLength(140 - tweet.length)
+      setDisabled(false)
+    } else{
+      setLength(140)
+      setDisabled(true)
+    }
+
+    if(tweet.length >= 120){
+      setDanger(true)
+    } else {
+      setDanger(false)
+    }
+    
+  }, [tweet])
 
 
+  const handleChange = (e) => {
+    setTweet(e.target.value)
+  }
 
 
   const handleSubmit = (e) => {
@@ -48,20 +71,28 @@ const [tweet, setTweet] = useState('')
 
   return (
     <div className='msgbox-root-container'>
-      <form onSubmit={handleSubmit}>
-        <FaUser className='testtest'/>
+      <form
+      className='msgbox-form' 
+      onSubmit={handleSubmit}>
+        <FaUser className='msgbox-profile-icon'/>
         <div className='textarea-submit'>
             <div className='textarea-counter'>
               <textarea 
               id='tweet'
               value={tweet}
               placeholder="What's happening?"
-              onChange={e => setTweet(e.target.value)}
+              onChange={handleChange}
               />
-              <p className='tweet-counter'>140</p>
+              <p 
+              className='tweet-counter'
+              style={{
+                color: danger !== true ? 'white' : 'red'
+              }}>
+              {length}</p>
             </div>
             
-            <button className='btn btn-tweet'>Tweet</button>
+            <button className='btn btn-tweet'
+            disabled={disabled}>Tweet</button>
         </div>
       </form>   
 

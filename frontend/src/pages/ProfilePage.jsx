@@ -17,6 +17,8 @@ function ProfilePage() {
         
       </div>
     </div>
+
+    
   )
 }
 export default ProfilePage

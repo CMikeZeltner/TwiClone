@@ -26,7 +26,6 @@ const getSingleTweet = async (userNameTweetID) => {
 
 
 const getFollowedTweets = async (userID) => {
-    console.log('in getfollowedtweets')
 }
 
 // const likeTweet = async(tweetID, token) => {

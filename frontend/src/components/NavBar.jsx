@@ -28,7 +28,11 @@ function NavBar() {
                 <span className='nav-text'>Profile</span>
             </a>
 
+            <button>hey</button>
+
         </nav>
+
+        
         
         
         </div>

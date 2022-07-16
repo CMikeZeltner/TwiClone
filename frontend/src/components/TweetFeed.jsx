@@ -59,7 +59,8 @@ const {tweets, isLoading, isSuccess} = useSelector((state) => state.tweets)
         </div>
       </div>
 
-      <ProfileInfoBox />
+
+      {window.location.pathname === '/home' ? <MessageBox/> : <ProfileInfoBox /> }
       
 
 
