@@ -1,16 +1,12 @@
 import {useNavigate} from 'react-router-dom'
-import {logout, reset} from '../features/auth/authSlice'
-import {useDispatch} from 'react-redux'
 
 
 function Logout() {
 
     const navigate = useNavigate()
-    const dispatch = useDispatch()
 
     const handleLogout = () => {
-        dispatch(logout())
-        dispatch(reset())
+      localStorage.removeItem('user')
         navigate('/login')
 
     }

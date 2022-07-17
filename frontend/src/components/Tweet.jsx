@@ -14,16 +14,23 @@ function Tweet({tweet}) {
 
   return (
     <div className='tweet-root-container'>
-      <a href="/mrmike">
+      <a href={`/${tweet.user.userName}`}>
         <FaUser className='tweet-profile-pic'/>
       </a>
         <div className='tweet-content-container'>
+
+      <a href={`${tweet.tweetURL}`}>
         <div className='tweet-names'>
-          <h2>{tweet.user.displayName}</h2>
-          <h2>@{tweet.user.userName}</h2>
+          <h2 style={{color: 'white'}}>{tweet.user.displayName}</h2>
+          <h2>{`@${tweet.user.userName}`}</h2>
+          <span style={{color: 'white'}}>*</span>
+          <h2>{new Date(tweet.createdAt).toLocaleString('en-us', {month: 'short', year: 'numeric'})}</h2>
         </div>
-        
-        <p>{tweet.message}</p>
+
+        <p className='tweet-message'
+        style={{color: 'white'}}>{tweet.message}</p>
+      </a>
+
         <div className='tweet-interactions'>
           <FaComment style={{color: 'white' }} 
           className='tweet-interaction-button'/>

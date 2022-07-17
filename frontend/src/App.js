@@ -24,9 +24,9 @@ function App() {
           </Route>
 
         
-          
+          <Route path='/:userName' element={<LoggedInRoutes />}>
             <Route path='/:userName' element={<ProfilePage />} />
-          
+          </Route>
          
             <Route path='/:userName/status/:id' element={<TweetPage />} />
         

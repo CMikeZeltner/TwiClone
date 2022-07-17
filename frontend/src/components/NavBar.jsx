@@ -1,12 +1,9 @@
 import {FaHome} from 'react-icons/fa'
 import {BsHurricane, BsPersonFill} from 'react-icons/bs'
-import {useSelector} from 'react-redux'
 
 function NavBar() {
 
-    const {user} = useSelector((state) => state.auth)
-    const userName = user.userName
-    
+    const userLink = JSON.parse(localStorage.getItem('user'))
     
   return (
     <div className='root-navbar-container'>
@@ -23,7 +20,7 @@ function NavBar() {
                 <span className='nav-text'>Home</span>
             </a>
 
-            <a href={`/${userName}`} className='navbar-link'>
+            <a href={`/${userLink.userName}`} className='navbar-link'>
                 <BsPersonFill className='navbar-icon'/>
                 <span className='nav-text'>Profile</span>
             </a>

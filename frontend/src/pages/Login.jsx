@@ -1,9 +1,8 @@
 import {useState, useEffect} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {BsHurricane} from 'react-icons/bs'
 import {FaEye} from 'react-icons/fa'
-import {login} from '../features/auth/authSlice'
+import axios from 'axios'
 
 function Login() {
 
@@ -15,20 +14,20 @@ function Login() {
     const [showPassword, setShowPassword] = useState(false)
 
     const [loggedIn, setLoggedIn] = useState(false)
+    const [error, setError] = useState(false)
     
 
     const {email, password} = formData
 
-    const {user} = useSelector((state) => state.auth)
 
     const navigate = useNavigate()
-    const dispatch = useDispatch()
 
     useEffect(() => {
-        if(user || loggedIn){
+        if(loggedIn){
             navigate('/home')
         }
-    }, [user, navigate, dispatch, loggedIn])
+    }, [loggedIn, navigate])
+
 
     const onChange = (e) =>{
         setFormData((prevState) => ({
@@ -41,20 +40,19 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const userData = {
-            email,
-            password
-        }
-        dispatch(login(userData))
-        
 
-        if(user){
-            setLoggedIn(true)
-        } else {
-            console.log('wrong info')
-        }
+       axios.post('/login', {
+            formData
+       })
+       .then(response =>  {
+        console.log(response)
+        localStorage.setItem('user', JSON.stringify(response.data))
+        setLoggedIn(true)
+       })
+       .catch(error => {
+        console.log(error)
+       })
     }
-
        
 
 
@@ -96,7 +94,7 @@ function Login() {
                 }}/>
             </div>
            
-
+                <h2 hidden={error === true ? false : true}>Incorrect credentials</h2>
                 <button className='btn btn-submit' type='submit'>Log In</button>
             </form>
             <span>Don't have an account? <a href='/register'>Sign up!</a></span>

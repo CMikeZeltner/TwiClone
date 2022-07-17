@@ -1,51 +1,57 @@
 import NavBar from "../components/NavBar"
+import Tweet from "../components/Tweet"
 import FollowBar from "../components/FollowBar"
-import {useEffect} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import { getSingleTweet, reset } from "../features/tweets/tweetSlice"
+import {useEffect, useState} from 'react'
+import axios from "axios"
 
 
 
 
 function TweetPage() {
 
-  const dispatch = useDispatch()
-  const {tweets, isLoading, isSuccess} = useSelector((state) => state.tweets)
-    //Get tweet ID from URL pathname
-
-
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
+  const [tweet, setTweet] = useState({})
 
   useEffect(() => {
-    const userNameTweetID = window.location.pathname
-    dispatch(getSingleTweet(userNameTweetID))
-
-  }, [dispatch])
-
-  useEffect(() => {
-    return () => {
-      if(isSuccess){
-        dispatch(reset())
-      }
+    async function fetchTweet(){
+      const response = await axios(window.location.pathname)
+      .then(response => {
+        setTweet(response.data)
+        setLoading(false)
+      })
+      .catch(error => {
+        setError(true)
+        console.log(error)
+      })
     }
-  }, [dispatch, isSuccess])
+    fetchTweet()
+  }, [])
 
-  if(isLoading){
-    return( <h2>Loading...</h2>)
-  }
+  console.log(tweet)
+
+  if(loading){
+    return <div>
+       <h2>Loading...</h2>
+   </div>
+ }
+
+ if(error){
+  return (
+  <>
+    <h2>Something went wrong</h2>
+    <a href={window.location.pathname}
+    className='btn btn-submit'>Reload</a>
+  </>
+  )
+}
 
  
 
   return (
-    <div className='home-container'>
+    <div className='nav-feed-follow-container'>
         <NavBar />
-        {tweets.length === 0 ? <h2>This tweet does not exist</h2> : 
-        <>
-        <div>{tweets.user.displayName}</div>
-        <div>{`@${tweets.user.userName}`}</div>
-        <div>{tweets.message}</div>
-        </>
-        
-        }
+        <Tweet tweet={tweet}/>      
         <FollowBar />
     
     </div>

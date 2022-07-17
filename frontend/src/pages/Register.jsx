@@ -1,8 +1,6 @@
 import {useState} from 'react'
-import {useDispatch} from 'react-redux'
 import {BsHurricane} from 'react-icons/bs'
 import {FaEye} from 'react-icons/fa'
-import {register} from '../features/auth/authSlice'
 
 
 function Register() {
@@ -17,7 +15,6 @@ function Register() {
     const [showPassword, setShowPassword] = useState(false)
 
 
-    const dispatch = useDispatch()
 
     const {userName, displayName, email, password} = formData
 
@@ -38,7 +35,6 @@ function Register() {
             email,
             password
         }
-        dispatch(register(registerData))
     }
        
 

@@ -1,8 +1,12 @@
+import { useEffect } from 'react'
 import {FaUser, FaMapMarker, FaCalendar} from 'react-icons/fa'
 
-function ProfileInfoBox() {
+function ProfileInfoBox({info}) {
 
 
+  const handleClick = () => {
+
+  }
 
 
 
@@ -11,13 +15,14 @@ function ProfileInfoBox() {
 
     <div className='profile-info-container'>
 
-      <FaUser className='profile-picture'
-      style={{
-        backgroundcolor: 'blue'
-      }}/>
+    <div className='prof-pic-follow-btn'>
+      <FaUser className='profile-picture'/>
+      <button className='btn btn-follow'
+      onClick={handleClick}>Follow</button>
+    </div>
       <div className='profile-username-displayname'>
-        <h2>Display Name</h2>
-        <h3>@UserName</h3>
+        <h2>{info.displayName}</h2>
+        <h3>{`@${info.userName}`}</h3>
       </div>
 
       <p className='profile-description'>profile description </p>
@@ -29,13 +34,13 @@ function ProfileInfoBox() {
         </div>
         <div className='profile-location-join-individual-div'>
         <FaCalendar className='profile-info-svg'/>
-        <span>Joined March 2020</span>
+        <span>{new Date(info.createdAt).toLocaleString('en-us', {month: 'long', year: 'numeric'})}</span>
         </div>
       </div>
 
       <div className='profile-following-followers'>
-        <span><span className='profile-num-follow'>100</span> Following</span>
-        <span><span className='profile-num-follow'>50</span> Followers</span>
+        <span><span className='profile-num-follow'>{info.following.length}</span> Following</span>
+        <span><span className='profile-num-follow'>{info.followers.length}</span> Followers</span>
       </div>
 
     </div>

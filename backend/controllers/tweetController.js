@@ -8,7 +8,7 @@ const User = require('../models/userModel')
 //@route POST /tweet/
 const createTweet = asyncHandler(async (req, res) => {
     const {userID, message} = req.body
-    
+    console.log(userID, message)
 
     //Check for required fields
     if(!message || message.length === 0){

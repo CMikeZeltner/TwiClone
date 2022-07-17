@@ -1,28 +1,52 @@
 import NavBar from '../components/NavBar'
-import ProfileInfoBox from '../components/ProfileInfoBox'
 import TweetFeed from '../components/TweetFeed'
 import FollowBar from '../components/FollowBar'
-import { useEffect } from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {getUserInfo} from '../features/user/userSlice'
-
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 function ProfilePage() {
 
-
-  const dispatch = useDispatch()
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
+  const [info, setInfo] = useState({})
 
   useEffect(() => {
-    dispatch(getUserInfo(window.location.pathname.slice(1)))
+    async function fetchData(){
+      const response = await axios(window.location.pathname.slice(1))
+      .then(response => {
+        setInfo(response.data)
+        setLoading(false)
+      })
+      .catch(error => {
+        setError(true)
+        console.log(error)
+      })
+    }
+    fetchData()
   }, [])
 
+
+
+  if(loading){
+    return 'Loading...'
+  }
+
+  if(error){
+    return (
+    <>
+      <h2>Something went wrong</h2>
+      <a href={window.location.pathname}
+      className='btn btn-submit'>Reload</a>
+    </>
+    )
+  }
 
   return (
     <div className='profile-page-container'>
       <div className='nav-feed-follow-container'>
       <NavBar />
         
-      <TweetFeed />
+      <TweetFeed info={info} />
       <FollowBar />
         
       </div>

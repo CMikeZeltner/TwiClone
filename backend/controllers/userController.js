@@ -61,7 +61,8 @@ const registerUser = asyncHandler(async (req, res) => {
 
 
 const loginUser = asyncHandler(async (req, res, next) => {
-    const {email, password} = req.body
+    const {email, password} = req.body.formData
+
     const user = await User.findOne({email})
 
     if(user && (await bcrypt.compare(password, user.password))){
@@ -69,12 +70,12 @@ const loginUser = asyncHandler(async (req, res, next) => {
             _id: user._id,
             userName: user.userName,
             displayName: user.displayName,
-            email: user.email,
             token: generateToken(user._id)
         })
         
     } else {
-        throw new Error('Invalid credentials')
+        res.status(401)
+        res.send('Invalid credentials')
     }
 })
 
@@ -85,13 +86,12 @@ const generateToken = (id) => {
 }
 
 const getUserInfo = async (req, res) => {
-    console.log(req.params)
     const user = await User.findOne({userName: req.params.userName}).select(['-password', '-email'])
     
     if(!user){
         throw new Error('User does not exist')
     } else {
-        return user
+        res.json(user)
     }
 }
 

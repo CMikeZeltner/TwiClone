@@ -1,37 +1,23 @@
 import {FaUser} from 'react-icons/fa'
 import {useState, useEffect} from 'react'
-import {useSelector, useDispatch} from 'react-redux'
-import { createTweet, reset } from "../features/tweets/tweetSlice"
+import axios from 'axios'
 
 
 
 function MessageBox() {
 
-const {user} = useSelector((state) => state.auth)
 
-const {isLoading, isSuccess} = useSelector((state) => state.tweets)
 const [tweet, setTweet] = useState('')
 const [length, setLength] = useState(140)
 const [danger, setDanger] = useState(false)
 const [disabled, setDisabled] = useState(true)
 
 
-  const dispatch = useDispatch()
 
 
-  useEffect(() => {
-    return () => {
-      if(isSuccess){
-        dispatch(reset())
-      }
-    }
-  }, [dispatch, isSuccess])
 
-  useEffect(() => {
-      if(isLoading){
-        return <h2>Loading...</h2>
-      }
-  }, [dispatch, isLoading])
+
+
 
   useEffect(() => {
 
@@ -61,7 +47,18 @@ const [disabled, setDisabled] = useState(true)
     e.preventDefault()
 
     if(tweet.length <= 140 && tweet.trim().length > 0){
-      dispatch(createTweet({userID: user._id, message: tweet}))
+      const user = JSON.parse(localStorage.getItem('user'))
+      const tweetUserID = { userID: user._id, message: tweet }
+      const config = {
+        headers: {Authorization: `Bearer ${user.token}`}
+      }
+
+      axios.post('/tweet', tweetUserID, config)
+      .then(response => (
+        console.log(response),
+        setTweet('')
+      ))
+      .catch(error => console.log(error))
     } 
   }
 
