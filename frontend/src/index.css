@@ -141,7 +141,7 @@ input:focus {
 	display: block;
 	margin: 2rem;
 	font-size: 14px;
-	color: rgba(255, 255, 255, .4);
+	color: rgba(255, 255, 255, .5);
 	position: absolute;
 	bottom: -.5rem;
 }
@@ -426,6 +426,79 @@ textarea:focus {
 	border-radius: 30px;
 	flex-shrink: 0;
 	margin-right: .5rem;
+}
+
+.tweet-page-root-container{
+	width: 100%;
+	max-width: 600px;
+	display: flex;
+	flex-direction: column;
+	margin-top: 1rem;
+	padding: 0 .5rem;
+}
+
+.tp-prof-pic-user-display-name-container{
+	display: flex;
+	margin-bottom: 1rem;
+}
+
+.tp-prof-pic-user-display-name-container > .tweet-profile-pic{
+	margin-left: 0;
+}
+
+.tp-user-display-name{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-left: .5rem;
+	width: 100%;
+}
+
+.tp-user-display-name > a:nth-of-type(1) > h2{
+	color: white;
+	font-weight: bold;
+}
+
+.tp-user-display-name > a:nth-of-type(2) > h2{
+	color: rgba(255, 255, 255, .5);
+}
+
+
+.tweet-page-root-container > p {
+	margin-bottom: 1rem;
+	font-size: 23px;
+}
+
+.tp-tweet-time-date{
+	display: flex;
+	margin-bottom: 1rem;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid white;
+}
+
+.tp-tweet-time-date > h2{ 
+	margin-right: .5rem;
+	color: rgba(255, 255, 255, .5);
+}
+
+.tp-tweet-time-date > span{ 
+	margin-right: .5rem;
+	color: rgba(255, 255, 255, .5);
+}
+
+.tp-retweet-likes{
+	display: flex;
+	border-bottom: 1px solid white;
+	padding-bottom: 1rem;
+}
+
+.tp-tweet-interactions{
+	display: flex;
+	justify-content: space-between;
+	margin: 1rem 0 0 0;
+	border-bottom: 1px solid white;
+	padding: 0 2.5rem 1rem 2.5rem;
+	margin-bottom: 1rem;
 }
 
 @media (min-width: 500px) {

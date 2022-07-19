@@ -3,8 +3,8 @@
 
 //Checks if the (unencryped) password is between 8 and 16 characters
 const validatePassword = (req, res, next) => {
-    const {password} = req.body
-    if(password.length < 8 || password.length > 16){
+    const pWord = req.body.formData.password
+    if(pWord.length < 8 || pWord.length > 16){
         throw new Error('Invalid password')
     }
     
@@ -14,13 +14,18 @@ const validatePassword = (req, res, next) => {
 
 //Checks to see if username is not restricted 
 const validateUsername = (req, res, next) => {
-    const {userName} = req.body
-    if(userName === 'login' || userName === 'home' || 
-    userName === 'register' || userName === 'logout'){
+    const userN = req.body.formData.userName
+    console.log(req.body.formData.userName)
+    if(userN.toLowerCase() == 'login' || 
+    userN.toLowerCase() == 'home' || 
+    userN.toLowerCase() == 'register' || 
+    userN.toLowerCase() == 'logout'){
         throw new Error('Restricted username')
     }
 
     next()
+
+    
 }
 
 

@@ -1,6 +1,8 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import {BsHurricane} from 'react-icons/bs'
 import {FaEye} from 'react-icons/fa'
+import axios from 'axios'
+import {useNavigate} from 'react-router-dom'
 
 
 function Register() {
@@ -14,6 +16,17 @@ function Register() {
 
     const [showPassword, setShowPassword] = useState(false)
 
+    const [loggedIn, setLoggedIn] = useState(false)
+    const [error, setError] = useState(false)
+    
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if(loggedIn){
+            navigate('/home')
+        }
+    }, [loggedIn, navigate])
 
 
     const {userName, displayName, email, password} = formData
@@ -26,16 +39,30 @@ function Register() {
         }))
     }
 
+
+
     const handleSubmit = async (e) => {
         e.preventDefault()
-        
-        const registerData = {
-            userName,
-            displayName,
-            email,
-            password
+
+        if(userName && displayName && email && password){
+            axios.post('/register', {
+                formData
+            })
+            .then(response =>  {
+            console.log(response)
+            localStorage.setItem('user', JSON.stringify(response.data))
+            setLoggedIn(true)
+            })
+            .catch(error => {
+            console.log(error)
+            })
+
+        } else {
+            alert('Invalid form')
         }
     }
+           
+    
        
 
 

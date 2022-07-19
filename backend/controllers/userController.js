@@ -7,8 +7,9 @@ const { findByIdAndUpdate, findOneAndUpdate } = require('../models/userModel')
 
 
 const registerUser = asyncHandler(async (req, res) => {
-    const {userName, displayName, email, password} = req.body
-    
+
+    const {userName, displayName, email, password} = req.body.formData
+    console.log(req.body.formData)
 
     //Check for required fields
     if(!userName || !email || !password){
@@ -28,7 +29,7 @@ const registerUser = asyncHandler(async (req, res) => {
     //Check to see if email is unique
     const emailTaken = await User.findOne({email})
 
-    if(userTaken){
+    if(emailTaken){
         res.status(400)
         throw new Error('That email is already in use')
     }
