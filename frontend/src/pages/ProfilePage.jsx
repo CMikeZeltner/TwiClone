@@ -10,9 +10,10 @@ function ProfilePage() {
   const [error, setError] = useState(false)
   const [info, setInfo] = useState({})
 
+
   useEffect(() => {
     async function fetchData(){
-      const response = await axios(window.location.pathname.slice(1))
+      const response = await axios(window.location.pathname)
       .then(response => {
         setInfo(response.data)
         setLoading(false)
@@ -26,20 +27,8 @@ function ProfilePage() {
   }, [])
 
 
+  
 
-  if(loading){
-    return 'Loading...'
-  }
-
-  if(error){
-    return (
-    <>
-      <h2>Something went wrong</h2>
-      <a href={window.location.pathname}
-      className='btn btn-submit'>Reload</a>
-    </>
-    )
-  }
 
   return (
     <div className='profile-page-container'>

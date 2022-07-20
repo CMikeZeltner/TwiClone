@@ -18,8 +18,7 @@ router.route('/:userName/follow')
 router.route('/:userName')
 .get(getUserInfo)
 
-// router.route('/user/:id')
-// .get(getTweetUser)
+
 
 const tweetRouter = require('./tweetRoutes')
 router.use('/', tweetRouter)

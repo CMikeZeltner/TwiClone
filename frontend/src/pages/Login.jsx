@@ -88,7 +88,7 @@ function Login() {
                 onChange={onChange}/>
             </div>
                 <FaEye className='password-toggle'
-                onClick={() => showPassword === true ? setShowPassword(false) : setShowPassword(true)} 
+                onClick={() => setShowPassword(showPassword => !showPassword)} 
                 style={{
                     color: showPassword ? '#1da1f2' : 'white'
                 }}/>

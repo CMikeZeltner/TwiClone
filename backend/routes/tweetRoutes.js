@@ -10,9 +10,9 @@ router.route('/:username/status/:id/delete')
 .delete(protect, deleteTweet)
 
 router.route('/:userName/status/:id/like')
-.post(likeTweet)
+.post(protect, likeTweet)
 
-router.route('/home')
+router.route('/home/:id')
 .get(getFollowedTweets)
 
 router.route('/:userName/status/:id') 

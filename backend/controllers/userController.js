@@ -3,7 +3,6 @@ const User = require('../models/userModel')
 const Tweet = require('../models/tweetModel')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const { findByIdAndUpdate, findOneAndUpdate } = require('../models/userModel')
 
 
 const registerUser = asyncHandler(async (req, res) => {
@@ -92,14 +91,36 @@ const getUserInfo = async (req, res) => {
     if(!user){
         throw new Error('User does not exist')
     } else {
-        res.json(user)
+        res.json(user) 
     }
 }
 
 
 const followUser = async (req, res) => {
+    const {toFollowUserName, follower} = req.body
+    const toFollow = await User.findOne({userName: toFollowUserName})
+    const theFollower = await User.findOne({userName: follower})
+    
 
-  
+    if(!toFollow.followers.includes(theFollower._id)){
+     //Add to array of accounts that follow the user
+     toFollow.followers.push(theFollower._id)
+     await toFollow.save()
+    } else {
+        throw new Error('User already follows this account')
+    }
+
+    if(!theFollower.following.includes(toFollow._id)){
+        //Add to array of accounts the user follows
+        theFollower.following.push(toFollow._id)
+        await theFollower.save()
+       } else {
+           throw new Error('User already follows this account')
+       }
+
+       return res.status(204)
+
+
 }
 
 

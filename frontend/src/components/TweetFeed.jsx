@@ -13,18 +13,47 @@ function TweetFeed({info}) {
   const [error, setError] = useState(false)
   const [tweets, setTweets] = useState({})
 
+  
+  let numTweets = ''
+  if(info){
+    if(info.tweetCount === 1){
+      numTweets = '1 Tweet'
+    } else {
+      numTweets = `${info.tweetCount} Tweets`
+    }
+}
+
+console.log(info)
 
   useEffect(() => {
     async function fetchTweets(){
-      const response = await axios(`${window.location.pathname.slice(1)}/tweets`)
-      .then(response => {
-        setTweets(response.data)
-        setLoading(false)
-      })
-      .catch(error => {
-        setError(true)
-        console.log(error)
-      })
+      if(window.location.pathname === '/home'){
+       const response = await axios(`/home/${info._id}`, {
+          headers: { 'Authorization': `Bearer ${info.token}`}
+        })
+        .then(response => {
+          setTweets(response.data)
+          console.log(tweets)
+          setLoading(false)
+        })
+        .catch(error => {
+          setLoading(false)
+          setError(true)
+          console.log(error)
+        })
+      } else{
+         const response = await axios(window.location.pathname + '/tweets')
+          .then(response => {
+            setTweets(response.data)
+            console.log(tweets)
+            setLoading(false)
+          })
+          .catch(error => {
+            setLoading(false)
+            setError(true)
+            console.log(error)
+          })
+      }
     }
     fetchTweets()
   }, [])
@@ -43,7 +72,7 @@ function TweetFeed({info}) {
         <a href="/home"><FaArrowLeft className='sticky-back-button'/></a>
         <div className='sticky-username-tweet-count'>
         <h2>{window.location.pathname === '/home' ? 'Latest Tweets' : info.displayName}</h2>
-        <h3>{window.location.pathname === '/home' ? '' : '1 Tweet'}</h3>
+        <h3>{window.location.pathname === '/home' ? '' : numTweets}</h3>
         </div>
       </div>
 

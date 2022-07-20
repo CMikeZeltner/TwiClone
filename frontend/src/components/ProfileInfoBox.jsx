@@ -1,12 +1,30 @@
+import axios from 'axios'
 import { useEffect } from 'react'
 import {FaUser, FaMapMarker, FaCalendar} from 'react-icons/fa'
 
 function ProfileInfoBox({info}) {
 
+  const user = JSON.parse(localStorage.getItem('user'))
+
 
   const handleClick = () => {
+    const config = {
+      headers: {Authorization: `Bearer ${user.token}`}
+    }
+
+      const followData = {
+        toFollowUserName: window.location.pathname.slice(1),
+        follower: user.userName
+      }
+      axios.post(`${window.location.pathname}/follow`, followData, config)
+      .then(response => (
+        console.log(response)
+      ))
+      .catch(error => console.log(error))
 
   }
+
+
 
 
 
@@ -39,8 +57,8 @@ function ProfileInfoBox({info}) {
       </div>
 
       <div className='profile-following-followers'>
-        <span><span className='profile-num-follow'>{info.following.length}</span> Following</span>
-        <span><span className='profile-num-follow'>{info.followers.length}</span> Followers</span>
+        <span><span className='profile-num-follow'>0</span> Following</span>
+        <span><span className='profile-num-follow'>0</span> Followers</span>
       </div>
 
     </div>

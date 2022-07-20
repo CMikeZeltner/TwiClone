@@ -15,7 +15,7 @@ function TweetPage() {
 
   useEffect(() => {
     async function fetchTweet(){
-      const response = await axios(window.location.pathname)
+      const response = await axios(`${window.location.pathname}`)
       .then(response => {
         setTweet(response.data)
         setLoading(false)
@@ -28,7 +28,6 @@ function TweetPage() {
     fetchTweet()
   }, [])
 
-  console.log(tweet)
 
   if(loading){
     return <div>

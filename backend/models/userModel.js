@@ -33,17 +33,10 @@ const userSchema = mongoose.Schema({
     following: {
         type: [{
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
         }],
         default: []
     },
-    followers: {
-        type: [{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
-        }],
-        default: []
-    },
+    followers: [mongoose.Schema.Types.ObjectId],
     likeList: {
         type: [{
             type: mongoose.Schema.Types.ObjectId,

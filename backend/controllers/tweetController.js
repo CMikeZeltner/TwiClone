@@ -32,8 +32,11 @@ const createTweet = asyncHandler(async (req, res) => {
         likes: 0,
     })
 
+
     tweet.tweetURL = `/${user.userName}/status/${tweet._id}`
     await tweet.save()
+    user.tweetCount += 1
+    await user.save()
 
     res.json(tweet)
 })
@@ -47,13 +50,17 @@ const deleteTweet = asyncHandler(async (req, res) => {
     const tweetID = req.params.id
     console.log(tweetID)
     
-    const tweet = await Tweet.findByIdAndDelete(tweetID)
+    const tweet = await Tweet.findById(tweetID)
 
     if(!tweet){
         throw new Error('Tweet does not exist')
     }
 
-    
+    const user = await User.findById(tweet.user.userID)
+
+    user.tweetCount -= 1
+    await user.save()
+    Tweet.deleteOne(tweetID)
 
     res.json(tweet)
     
@@ -63,16 +70,17 @@ const deleteTweet = asyncHandler(async (req, res) => {
 
 
 //@desc Get all tweets from one user (For profile pages)
-//@route GET /:userName/
+//@route GET /:userName
 const getUserTweets = async (req, res) => {
     try {
         const tweets = await Tweet.find({"user.userName": req.params.userName})
         
-        if(tweets.length === 0){
-            res.json(null)
-        } else {
+        if(tweets){
             res.json(tweets)
+        } else{
+            res.json(null)
         }
+
 
     } catch (error) {
         console.log(error)
@@ -89,10 +97,10 @@ const getSingleTweet = async (req, res) => {
     try {
         const tweet = await Tweet.findById(tweetID)
        
-        if(!tweet){
-            res.json(null)
-        } else {
+        if(tweet){
             res.json(tweet)
+        } else{
+            res.json(null)
         }
 
     } catch (error) {
@@ -102,32 +110,21 @@ const getSingleTweet = async (req, res) => {
 }
 
 //@desc Get tweets from accounts the user follows
-//@route GET /home
-const getFollowedTweets = async (req, res) => {
-
-    const userName = req.params.userName
-    
+//@route GET /home/:id 
+const getFollowedTweets = async (req, res) => { 
     try {
-        const user = await User.findOne({userName: userName}).select(['-password', '-email'])
+        const user = await User.findById(req.params.id).select(['-password', '-email'])
 
         if(!user){
-
             throw new Error('User does not exist')
         }
 
 
+        const tweets = await Tweet.find({'user.userID': {$in:user.following}})
 
-        const tweets = await Tweet.find({user: {$in:user.following}})
-        
-        console.log(tweets)
-        console.log(tweets.length)
-        if(tweets.length === 0){
-            res.json(null)
-        } else {
-            res.json(tweets)
-        }
+       res.json(tweets)
 
-    } catch (error) {
+    } catch (error) { 
         console.log(error)
     }
 
