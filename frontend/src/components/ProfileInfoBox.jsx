@@ -7,6 +7,7 @@ function ProfileInfoBox({info}) {
   const user = JSON.parse(localStorage.getItem('user'))
 
 
+
   const handleClick = () => {
     const config = {
       headers: {Authorization: `Bearer ${user.token}`}
@@ -23,6 +24,10 @@ function ProfileInfoBox({info}) {
       .catch(error => console.log(error))
 
   }
+
+
+
+
 
 
 

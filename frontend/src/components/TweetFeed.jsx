@@ -13,6 +13,8 @@ function TweetFeed({info}) {
   const [error, setError] = useState(false)
   const [tweets, setTweets] = useState({})
 
+  const user = JSON.parse(localStorage.getItem('user'))
+
   
   let numTweets = ''
   if(info){
@@ -29,10 +31,10 @@ console.log(info)
     async function fetchTweets(){
       if(window.location.pathname === '/home'){
        const response = await axios(`/home/${info._id}`, {
-          headers: { 'Authorization': `Bearer ${info.token}`}
+          headers: { 'Authorization': `Bearer ${user.token}`}
         })
         .then(response => {
-          setTweets(response.data)
+          setTweets(response.data.reverse())
           console.log(tweets)
           setLoading(false)
         })
@@ -44,7 +46,7 @@ console.log(info)
       } else{
          const response = await axios(window.location.pathname + '/tweets')
           .then(response => {
-            setTweets(response.data)
+            setTweets(response.data.reverse())
             console.log(tweets)
             setLoading(false)
           })

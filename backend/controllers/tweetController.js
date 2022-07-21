@@ -58,9 +58,10 @@ const deleteTweet = asyncHandler(async (req, res) => {
 
     const user = await User.findById(tweet.user.userID)
 
+    
+    Tweet.deleteOne(tweetID)
     user.tweetCount -= 1
     await user.save()
-    Tweet.deleteOne(tweetID)
 
     res.json(tweet)
     

@@ -13,7 +13,7 @@ router.route('/:userName/status/:id/like')
 .post(protect, likeTweet)
 
 router.route('/home/:id')
-.get(getFollowedTweets)
+.get(protect, getFollowedTweets)
 
 router.route('/:userName/status/:id') 
 .get(getSingleTweet)

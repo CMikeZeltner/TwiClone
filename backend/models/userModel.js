@@ -30,13 +30,19 @@ const userSchema = mongoose.Schema({
         default: 0,
         min: 0
     },
-    following: {
-        type: [{
-            type: mongoose.Schema.Types.ObjectId,
-        }],
-        default: []
-    },
+
+    following: [mongoose.Schema.Types.ObjectId],
     followers: [mongoose.Schema.Types.ObjectId],
+
+    followingCount: {
+        type: Number,
+        default: 0
+    },
+    followerCount: {
+        type: Number,
+        default: 0
+    },
+
     likeList: {
         type: [{
             type: mongoose.Schema.Types.ObjectId,
@@ -44,6 +50,7 @@ const userSchema = mongoose.Schema({
         }],
         default: []
     },
+    
 },
 {
     timestamps: true

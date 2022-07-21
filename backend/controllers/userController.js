@@ -103,22 +103,33 @@ const followUser = async (req, res) => {
     
 
     if(!toFollow.followers.includes(theFollower._id)){
-     //Add to array of accounts that follow the user
-     toFollow.followers.push(theFollower._id)
-     await toFollow.save()
-    } else {
-        throw new Error('User already follows this account')
-    }
+        //Add to array of accounts that follow the user
+        toFollow.followers.push(theFollower._id)
+        toFollow.followerCount += 1
+        await toFollow.save()
 
-    if(!theFollower.following.includes(toFollow._id)){
+
         //Add to array of accounts the user follows
         theFollower.following.push(toFollow._id)
+        theFollower.followingCount += 1
         await theFollower.save()
-       } else {
-           throw new Error('User already follows this account')
-       }
+    } else {
+        //Add to array of accounts that follow the user
+        toFollow.followers.pull(theFollower._id)
+        toFollow.followerCount -= 1
+        await toFollow.save()
 
-       return res.status(204)
+
+        //Add to array of accounts the user follows
+        theFollower.following.pull(toFollow._id)
+        theFollower.followingCount -= 1
+        await theFollower.save()
+    }
+
+    console.log(toFollow)
+    console.log(theFollower)
+
+    return res.status(204)
 
 
 }
