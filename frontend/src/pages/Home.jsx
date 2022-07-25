@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import NavBar from '../components/NavBar'
-import TweetFeed from '../components/TweetFeed'
+import TweetFeedHome from '../components/TweetFeedHome'
 import FollowBar from '../components/FollowBar'
 import axios from 'axios'
 function Home() {
@@ -48,7 +48,7 @@ function Home() {
   return (
     <div className='nav-feed-follow-container'>
       <NavBar />
-      <TweetFeed info={info}/>
+      <TweetFeedHome info={info}/>
       <FollowBar />
     </div>
   )

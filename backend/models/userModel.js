@@ -42,15 +42,7 @@ const userSchema = mongoose.Schema({
         type: Number,
         default: 0
     },
-
-    likeList: {
-        type: [{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
-        }],
-        default: []
-    },
-    
+    likeList: [mongoose.Schema.Types.ObjectId]
 },
 {
     timestamps: true

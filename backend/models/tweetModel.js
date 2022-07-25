@@ -20,7 +20,7 @@ const tweetSchema = mongoose.Schema({
         minLength: [1, 'Cannot post blank tweets'],
         maxLength: [240, 'Max tweet length is 240 characters']
     },
-    likes: {
+    likeCount: {
         type: Number,
         default: 0
     },

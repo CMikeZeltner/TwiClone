@@ -136,8 +136,33 @@ const getFollowedTweets = async (req, res) => {
 //@desc Like a tweet
 //@route GET /:userName/:id/like
 const likeTweet = async (req, res) => {
-    console.log(req)
-    res.send('asdasd')
+    //The user who sent the tweets username and Tweet ID
+    const {userName, tweetID} = req.params
+
+    //The user who is liking the Tweets userID
+    const {userID} = req.body
+
+    const tweet = await Tweet.findById(tweetID)
+
+    const user = await User.findById(userID)
+
+    if(!tweet.likeList.includes(userID)){
+        tweet.likeList.push(userID)
+        tweet.likeCount += 1
+        await tweet.save()
+        user.likeList.push(tweet._id)
+        await user.save()
+
+    } else {
+        tweet.likeList.pull(userID)
+        tweet.likeCount -= 1
+        await tweet.save()
+        user.likeList.pull(tweet._id)
+        await user.save()
+    }
+
+
+    return res.status(204)
 
 
 }

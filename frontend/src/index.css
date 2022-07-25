@@ -168,6 +168,7 @@ a:visited {
 .navbar-container {
 	display: flex;
 	width: 100%;
+	background-color: black;
 }
 
 .navbar-link:first-of-type {
@@ -252,6 +253,29 @@ a:visited {
 	padding: .5rem 0;
 }
 
+.tweet-interaction-button-container {
+	width: 35px;
+	height: 35px;
+	border-radius: 35px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.tibc-comment:hover, .tibc-share:hover{
+	background-color: rgba(82, 202, 250, 0.2);
+}
+
+.tibc-retweet:hover{
+	background-color: rgba(0, 128, 0, .3);
+}
+
+.tibc-heart:hover{
+	background-color: rgba(255, 100, 100, 0.3);
+}
+
+
+
 .tweet-interactions {
 	display: flex;
 	justify-content: space-between;
@@ -263,6 +287,7 @@ a:visited {
 	height: 19px;
 	width: 19px;
 }
+
 
 .root-followbar-container {
 	display: none;
@@ -349,9 +374,6 @@ a:visited {
 	margin-right: 1rem;
 }
 
-.tweetfeed-root-container {
-	height: 100vh;
-}
 
 .profile-info-svg {
 	height: 18px;

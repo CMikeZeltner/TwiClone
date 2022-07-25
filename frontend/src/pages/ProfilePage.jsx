@@ -1,5 +1,5 @@
 import NavBar from '../components/NavBar'
-import TweetFeed from '../components/TweetFeed'
+import TweetFeedProfile from '../components/TweetFeedProfile'
 import FollowBar from '../components/FollowBar'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -31,15 +31,13 @@ function ProfilePage() {
 
 
   return (
-    <div className='profile-page-container'>
       <div className='nav-feed-follow-container'>
       <NavBar />
         
-      <TweetFeed info={info} />
+      <TweetFeedProfile info={info} />
       <FollowBar />
         
       </div>
-    </div>
 
     
   )

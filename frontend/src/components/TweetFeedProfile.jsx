@@ -25,17 +25,12 @@ function TweetFeed({info}) {
     }
 }
 
-console.log(info)
 
   useEffect(() => {
     async function fetchTweets(){
-      if(window.location.pathname === '/home'){
-       const response = await axios(`/home/${info._id}`, {
-          headers: { 'Authorization': `Bearer ${user.token}`}
-        })
+        const response = await axios(window.location.pathname + '/tweets')
         .then(response => {
           setTweets(response.data.reverse())
-          console.log(tweets)
           setLoading(false)
         })
         .catch(error => {
@@ -43,19 +38,6 @@ console.log(info)
           setError(true)
           console.log(error)
         })
-      } else{
-         const response = await axios(window.location.pathname + '/tweets')
-          .then(response => {
-            setTweets(response.data.reverse())
-            console.log(tweets)
-            setLoading(false)
-          })
-          .catch(error => {
-            setLoading(false)
-            setError(true)
-            console.log(error)
-          })
-      }
     }
     fetchTweets()
   }, [])
@@ -73,23 +55,23 @@ console.log(info)
       <div className='latest-tweets-sticky'>
         <a href="/home"><FaArrowLeft className='sticky-back-button'/></a>
         <div className='sticky-username-tweet-count'>
-        <h2>{window.location.pathname === '/home' ? 'Latest Tweets' : info.displayName}</h2>
-        <h3>{window.location.pathname === '/home' ? '' : numTweets}</h3>
+        <h2>{info.displayName}</h2>
+        <h3>{numTweets}</h3>
         </div>
       </div>
 
 
-      {window.location.pathname === '/home' ? <MessageBox/> : <ProfileInfoBox info={info}/> }
-      
+      {<ProfileInfoBox info={info}/> }
+    
 
-
-      
-       {!tweets ? <h2>No tweets to show</h2> : 
+      {!tweets ? <h2>No tweets to show</h2> : 
       tweets.map((tweet) => (
+
         <Tweet key={tweet._id}
-        tweet={tweet} />
+        tweet={tweet}
+        color={info.likeList.includes(tweet._id) === true ? 'red' : 'white'} 
+        />
       ))} 
-      
       
     </div>
   )

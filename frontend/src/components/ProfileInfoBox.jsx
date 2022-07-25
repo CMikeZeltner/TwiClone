@@ -62,8 +62,8 @@ function ProfileInfoBox({info}) {
       </div>
 
       <div className='profile-following-followers'>
-        <span><span className='profile-num-follow'>0</span> Following</span>
-        <span><span className='profile-num-follow'>0</span> Followers</span>
+        <span><span className='profile-num-follow'>{info.followingCount}</span> Following</span>
+        <span><span className='profile-num-follow'>{info.followerCount}</span> {info.followerCount !== 1 ? 'Followers' : 'Follower'}</span>
       </div>
 
     </div>

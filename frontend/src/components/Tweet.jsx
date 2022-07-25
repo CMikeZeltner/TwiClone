@@ -1,13 +1,32 @@
-import {FaHeart, FaUser, FaComment, FaRetweet, FaArrowCircleUp} from 'react-icons/fa'
+import {FaUser, FaRetweet} from 'react-icons/fa'
+import {FaRegComment, FaRegHeart} from 'react-icons/fa'
+import {FiShare} from 'react-icons/fi'
+import axios from 'axios'
+
+
 //import {useDispatch} from 'react-redux'
 
-function Tweet({tweet}) {
+function Tweet({tweet, color}) {
 
-  // const dispatch = useDispatch()
+  const user = JSON.parse(localStorage.getItem('user'))
 
 
-  const likeTweet = (e) => {
-    e.preventDefault()
+
+  const likeTweet = () => {
+
+    const config = {
+      headers: {Authorization: `Bearer ${user.token}`}
+    }
+
+    const userID = {userID: user._id}
+
+    const response = axios.post(`/${tweet.user.userName}/status/${tweet._id}/like`, userID, config)
+    .then(() => {
+      console.log('success')
+    })
+    .catch(error => {
+      console.log(`Error: ${error}`)
+    })
   }
 
 
@@ -32,14 +51,24 @@ function Tweet({tweet}) {
       </a>
 
         <div className='tweet-interactions'>
-          <FaComment style={{color: 'white' }} 
-          className='tweet-interaction-button'/>
-          <FaHeart style={{color: 'white' }}
-          className='tweet-interaction-button'/>
-          <FaRetweet style={{color: 'white' }}
-          className='tweet-interaction-button'/>
-          <FaArrowCircleUp style={{color: 'white' }}
-          className='tweet-interaction-button'/>
+          <div className='tweet-interaction-button-container tibc-comment'>
+            <FaRegComment style={{color: 'white' }} 
+                className='tweet-interaction-button'/>
+          </div>
+          <div className='tweet-interaction-button-container tibc-retweet'>
+              <FaRetweet style={{color: 'white' }}
+                className='tweet-interaction-button'/>
+          </div>
+          <div className='tweet-interaction-button-container tibc-heart'>
+              <FaRegHeart color={color}
+                className='tweet-interaction-button'
+                onClick={likeTweet}/>
+          </div>
+          <div className='tweet-interaction-button-container tibc-share'>
+              <FiShare style={{color: 'white' }}
+                className='tweet-interaction-button'/>
+          </div>
+          
         </div>
         </div>
         
